@@ -1,50 +1,68 @@
 import axios from 'axios'
+import _ from 'loadsh'
 import qs from 'qs'
 
-export const post = (url, payload = {}) => {
-  let result = ''
-  if (localStorage.token) {
-    result = { ...payload, token: localStorage.token }
-  } else {
-    result = payload
-  }
+let cancelToken = axios.CancelToken
+const cancel = []
 
-  return new Promise((resolve, reject) => {
-    axios({
-      method: 'post',
-      url,
-      baseURL: '/api',
-      data: qs.stringify(result)
-    })
-      .then(response => {
-        resolve(response)
-      })
-      .catch(err => {
-        reject(err)
-      })
-  })
+const removePending = config => {
+    for (let p in cancel) {
+        if (cancel[p].u === config.url) {
+            cancel[p].f()
+        }
+    }
 }
 
-export const get = (url, payload) => {
-  let result = ''
-
-  if (localStorage.getItem('token')) {
-    result = { ...payload, token: localStorage.getItem('token') }
-
-  } else {
-    result = payload
-  }
-
-  return new Promise((resolve, reject) => {
-    axios({
-      method: 'get',
-      url,
-      params: result,
-      baseURL: '/api'
+// 请求拦截器 发送一个请求之前
+axios.interceptors.request.use(config => {
+    //在一个ajax发送前执行一下取消操作
+    removePending(config)
+    config.cancelToken = new cancelToken(c => {
+        cancel.push({
+            f: c,
+            u: config.url,
+        })
     })
-      .then(res => {
-        resolve(res)
-      })
-      .catch(err => reject(err))
-  })
+    return config
+}, error => {
+    return Promise.reject(error)
+})
+
+//添加响应拦截器
+axios.interceptors.response.use(response => {
+    return response
+}, error => {
+    switch (_.get(error, 'response.status', '')) {
+        case 504:
+            console.log('您已经断网了....')
+            break;
+
+        default:
+            break;
+    }
+    return Promise.reject(error)
+})
+
+export function requestPost(url, action = {}) {
+
+    return new Promise((resolve, reject) => {
+        axios({
+            method: 'POST',
+            baseURL: '/api',
+            url,
+            data: qs.stringify(action),
+        })
+            .then(res => resolve(res))
+            .catch(err => reject(err))
+    })
+}
+
+export function requestGet(url) {
+    return new Promise((resolve, reject) => {
+        axios({
+            url
+        })
+            .then(res => resolve(res))
+            .catch(err => reject(err))
+    })
 }

@@ -1,0 +1,54 @@
+.layouts_home {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .header_nav {
+        width: 100%;
+        height: 60px;
+        background: rgba(15, 15, 15, 0.692);
+        display: flex;
+        color: white;
+        .logo {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        .nav {
+            flex: 1.5;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .search {
+            flex: 2;
+            height: 100%;
+            padding: 11px 60px;
+            box-sizing: border-box;
+            
+            .allSearch {
+                width: 100%;
+                height: 38px;
+                border: 0;
+                border-radius: 10px;
+                color: #000;
+                outline: none;
+                padding-left: 20px;
+                font-size: 18px;
+                box-sizing: border-box;
+            }
+        }
+        .user {
+            flex: 1.5;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        } 
+    }
+    .home_content {
+        flex: 1;
+        overflow: auto;
+    }
+}
