@@ -1,0 +1,1 @@
+export const DO_HOME = 'DO_HOME' //home
