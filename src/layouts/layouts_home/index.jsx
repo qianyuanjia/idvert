@@ -1,6 +1,7 @@
 import React from 'react';
 import PrivateRoute from '@@/PrivateRoute'
 import Nav from '@@/Nav';
+import login from '@/assets/images/logo.png'
 import './styles.less'
 
 export default class extends React.PureComponent {
@@ -9,7 +10,7 @@ export default class extends React.PureComponent {
             <div className='layouts_home'>
                 <div className="header_nav">
                     <div className="logo">
-                        LOGO
+                        <img src={login} alt="logo"/>
                     </div>
                     <div className="nav">
                         <Nav
