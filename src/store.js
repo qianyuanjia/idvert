@@ -19,7 +19,8 @@ const myPersistReducer = combineReducers({
     login: persistReducer(
         rootPersistConfig,
         rdc.login
-    )
+    ),
+    samplesList: rdc.samplesList
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
