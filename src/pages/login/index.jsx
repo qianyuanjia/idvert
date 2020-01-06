@@ -30,7 +30,9 @@ class extends React.PureComponent {
                         save_token({
                             token: res.payload.data.result
                         })
+                        localStorage.setItem('token', res.payload.data.result)
                         message.success('登陆成功')
+                        this.props.history.push('/')
                     } else {
                         message.error('登陆失败')
                     }
