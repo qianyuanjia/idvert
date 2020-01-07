@@ -57,7 +57,7 @@ export default class extends PureComponent {
                     <div className="http">
                         {http}
                     </div>
-                    <div>
+                    <div className="move">
                         Leam More
                     </div>
                 </div>
