@@ -15,7 +15,6 @@ import { home_form } from '@/actions/home'
 import { HOME_AD } from '@/constants/actionTypes'
 import { hump } from '@/utils/string'
 import moment from 'moment';
-import { Cart } from '@@'
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -223,7 +222,6 @@ class extends React.PureComponent {
 
                     </Form>
                 </div>
-                <Cart />
             </div>
         )
     }
