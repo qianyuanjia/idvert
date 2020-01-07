@@ -2,7 +2,6 @@
 import React from 'react'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
-import { loading } from '@/actions/samples'
 
 export default @withRouter
 class extends React.PureComponent {
