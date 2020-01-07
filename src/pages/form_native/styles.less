@@ -1,6 +1,8 @@
 .form_native {
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
     .form_native_nav {
         height: 48px;
         background: #fff;
@@ -8,12 +10,16 @@
         align-items: center;
         justify-content: center;
         .center_nav {
-            width: 300px;
+            width: 500px;
             display: flex;
             justify-content: space-around;
         }
         a {
             color: #555;
         }
+    }
+    .form_native_content {
+        flex: 1;
+        overflow: auto;
     }
 }
