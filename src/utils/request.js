@@ -66,3 +66,4 @@ export function requestGet(url) {
             .catch(err => reject(err))
     })
 }
+

@@ -11,5 +11,5 @@ module.exports = function (app) {
             '^/api': ''  // 这样处理后, 最终得到的接口路径为: 
         }
     }
-    ));
+    ))
 }
