@@ -11,6 +11,4 @@ export const table = options => {
 // 王红涛 api
 
 // 崔亚俊 api
-export const login = (options) => {
-    return requestPost(api.Login, options)
-}
+export const homt_add_api = options => requestPost(api.Put, options)
