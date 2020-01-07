@@ -1,5 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
 import Select from '@/pages/form_inputs'
 import { connect } from 'react-redux'
 import { samples_list, } from '@/actions/samplesList'
@@ -11,17 +10,11 @@ import imagesLoaded from 'imagesloaded'
 import cs from 'classnames'
 import { Spin } from 'antd'
 import './styles.less'
-=======
-import './styles.less'
-import Select from '@/pages/form_inputs'
+
 import { POST_TABDATA } from '@/constants/actionTypes'
-import { connect } from 'react-redux'
-import { samples_list } from '@/actions/samplesList'
 import selectJson from '@/assets/select.json'
-import { hump } from '@/utils/string.js'
 import { Checkbox } from 'antd'
 
->>>>>>> wang
 
 export default @connect(state => {
     return {
@@ -30,12 +23,9 @@ export default @connect(state => {
         counts: state.samplesList.count
     }
 }, {
-<<<<<<< HEAD
     // POST_TABDATA: samples_list.POST_TABDATA
     samples: samples_list[hump(SAMPLES_LIST)],
-=======
     post_data: samples_list[hump(POST_TABDATA)]
->>>>>>> wang
 })
 class extends React.Component {
     constructor(props) {
@@ -54,7 +44,6 @@ class extends React.Component {
         })
     }
 
-<<<<<<< HEAD
     advanceWidth = () => {
         // new Masonry(节点, 配置)
         new Masonry(document.querySelector('.pages-hoc'), {
@@ -63,7 +52,8 @@ class extends React.Component {
             fitWidth: true, // 设置网格容器宽度等于网格宽度
             gutter: 20,
         })
-=======
+    }
+    
     componentDidMount() {
         console.log(selectJson);
         const token = localStorage.getItem('token')
@@ -72,7 +62,6 @@ class extends React.Component {
     
     onChange = (e) => {
         console.log(`checked = ${e.target.checked}`);
->>>>>>> wang
     }
 
     loadFunc = (page = 1) => {
@@ -92,31 +81,14 @@ class extends React.Component {
             })
     }
     render() {
-<<<<<<< HEAD
         const { hasmore, data, count } = this.state
-=======
         const { tabData } = this.props
         console.log(tabData);
->>>>>>> wang
         return (
             <div className='samples_list'>
                 <div className="list_top">
                     <div>Permium Search: </div>
                     <div>
-<<<<<<< HEAD
-                        <Select title="Search Position" />
-                        <Select title="Geo" />
-                        <Select title="Languge" />
-                        <Select title="Device Type" />
-                        <Select title="Ad Network" />
-                        <Select title="Height" />
-                        <Select title="Width" />
-                        <Select title="Affiliate Network" />
-                        <Select title="Vertivcal" />
-                        <Select title="Offer Name" />
-                        <Select title="Search Position" />
-                        <Select title="Search Position" />
-=======
                         <Select title="Search Position"/>
                         <Select title="Geo"/>
                         <Select title="Languge"/>
@@ -134,7 +106,6 @@ class extends React.Component {
                                 CDN
                             </Checkbox>
                         </div>
->>>>>>> wang
                     </div>
                 </div>
                 <div className="list_title">
