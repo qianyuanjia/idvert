@@ -1,35 +1,34 @@
 import React from 'react';
 import './styles.less'
-import api from '@/services/api'
 import Select from '@/pages/form_inputs'
-
+import { POST_TABDATA } from '@/constants/actionTypes'
 import { connect } from 'react-redux'
-import { requestPost } from '@/utils/request'
 import { samples_list } from '@/actions/samplesList'
 import selectJson from '@/assets/select.json'
-console.log(samples_list);
+import { hump } from '@/utils/string.js'
+import { Checkbox } from 'antd'
+
 
 export default @connect(state => {
     return { tabData: state.samplesList.tabData }
 }, {
-    // POST_TABDATA: samples_list.POST_TABDATA
+    post_data: samples_list[hump(POST_TABDATA)]
 })
 class extends React.Component {
 
     componentDidMount() {
         console.log(selectJson);
-        
-        // this.props.POST_TABDATA(
-        //         {   limit: 10, page: 1, 
-        //             token: localStorage.getItem('token')
-        //     })
-        //     .then(res => {
-        //         console.log(res.data.result)
-        //     })
- 
-    }           
+        const token = localStorage.getItem('token')
+        this.props.post_data({ limit: 10, page: 1, token })
+    }   
+    
+    onChange = (e) => {
+        console.log(`checked = ${e.target.checked}`);
+    }
 
     render() {
+        const { tabData } = this.props
+        console.log(tabData);
         return (
             <div className='samples_list'>
                 <div className="list_top">
@@ -47,6 +46,11 @@ class extends React.Component {
                         <Select title="Offer Name"/>
                         <Select title="Search Position"/>
                         <Select title="Search Position"/>
+                        <div className="checkout">
+                            <Checkbox onChange={this.onChange}>
+                                CDN
+                            </Checkbox>
+                        </div>
                     </div>
                 </div>
                 <div className="list_title">
