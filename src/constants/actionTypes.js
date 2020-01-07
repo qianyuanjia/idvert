@@ -1,5 +1,5 @@
 // 张慧敏 const
-
+export const AD_SAMPLES = 'AD_SAMPLES'
 // 李晓超 const
 
 // 王红涛 const

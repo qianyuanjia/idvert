@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
+import Interceptors from '@/components/Interceptors'
 
 import {
     Layouts_home,
@@ -61,11 +62,11 @@ const route = [
                         path: '/formnative/home',
                         component: Home
                     },
-                    {   
+                    {
                         path: '/formnative',
                         component: Form_list
                     }
-                ] 
+                ]
             },
             {
                 path: '/info',
@@ -89,6 +90,7 @@ export default class extends React.PureComponent {
     render() {
         return (
             <BrowserRouter >
+                <Interceptors />
                 {renderRoutes(route)}
             </BrowserRouter>
         )
