@@ -10,12 +10,12 @@ export default @withRouter
 class extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.redirect(props)
+    // this.redirect(props)
   }
   
   // nextProps
   componentWillReceiveProps (np) {
-    this.redirect(np)
+    // this.redirect(np)
   }
 
   // 重定向

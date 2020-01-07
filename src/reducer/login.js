@@ -1,14 +1,11 @@
+import { handleActions } from 'redux-actions'
+
 const initState = {
-    login: [],
+    username: '',
+    token: '',
 }
 
-export default function login(state = initState, action) {
-    switch (action.type) {
-        case 'POST_LOGIN':
-            console.log(action.payload, 'action_login');
-            return 1
-    
-        default:
-            return state
-    }
-}
+export default handleActions({
+    LOGIN: (state, action) => ({ ...state, username: '暂时无返回值' }),
+    SAVE_TOKEN: (state, action) => ({ ...state, token: action.payload.token })
+}, initState)
