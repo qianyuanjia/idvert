@@ -15,6 +15,7 @@ import { home_form } from '@/actions/home'
 import { HOME_AD } from '@/constants/actionTypes'
 import { hump } from '@/utils/string'
 import moment from 'moment';
+import { Cart } from '@@'
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -24,7 +25,7 @@ export default @Form.create()
 @connect(state => {
     // console.log(state)
     return {
-        
+
     }
 }, {
     home_sub: home_form[hump(HOME_AD)]
@@ -79,13 +80,17 @@ class extends React.PureComponent {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                const { title, info, http, cod, content, typeImg, endTime: { _d }, upload } = values
+                const { title, info: addInfo, http, cod, content, typeImg, endTime: { _d }, upload } = values
+
                 let imgUrl = upload[0].response.url
+                let token = localStorage.getItem("token") || ""
+
                 let endTime = moment(_d.getTime()).format('YYYY-MM-DD HH:mm:ss')
                 let createTime = moment(new Date().getTime()).format('YYYY-MM-DD HH:mm:ss')
-                let sub = {
+
+                let info = {
                     title,
-                    info,
+                    addInfo,
                     http,
                     cod,
                     content,
@@ -93,11 +98,17 @@ class extends React.PureComponent {
                     endTime,
                     createTime,
                     imgUrl,
+                    save: 0, // 0 为收藏 1 收藏
                 }
-                console.log(sub)
-                this.props.home_sub(sub)
-                    .then(res => console.log(res))
-                    .catch(err => console.log(err))
+
+                this.props.home_sub({ token, info })
+                    .then(res => {
+                        if (res.payload.data.code == 200) {
+                            message.success("添加成功")
+                        } else {
+                            message.error("添加失败")
+                        }
+                    })
             }
         });
     };
@@ -212,6 +223,7 @@ class extends React.PureComponent {
 
                     </Form>
                 </div>
+                <Cart />
             </div>
         )
     }

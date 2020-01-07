@@ -1,7 +1,11 @@
+// 张慧敏 api
 import api from './api'
 import { requestPost } from '@/utils/request'
 
-// 张慧敏 api
+const list = options => requestPost(api.Demo, options)
+export {
+    list
+}
 
 // 李晓超 api
 
