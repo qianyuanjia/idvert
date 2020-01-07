@@ -8,6 +8,9 @@ export {
 }
 
 // 李晓超 api
+export const tables = options => {
+    return requestPost(api.List, options)
+}
 
 // 王红涛 api
 export const table = options => {
