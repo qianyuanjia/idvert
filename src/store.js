@@ -20,7 +20,6 @@ const myPersistReducer = combineReducers({
         rootPersistConfig,
         rdc.login
     ),
-    samples:rdc.ad_samples,
     samplesList: rdc.samplesList
 })
 

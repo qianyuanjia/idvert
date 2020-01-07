@@ -5,6 +5,8 @@
     padding: 20px;
     box-sizing: border-box;
     color: black;
+    display: flex;
+    flex-direction: column;
     .list_top{
         width: 100%;
         height: 150px;
@@ -46,5 +48,71 @@
             font-size: 14px;
             border-radius: 5px;
         }
+    }
+    .list_body{
+        width: 100%;
+        flex: 1;
+        overflow: auto;
+        .loader{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .pages-hoc {
+            margin: 0 auto;
+            .d {
+                border-radius: 5px;
+                margin-bottom: 20px;
+                background: white;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: center;
+                dt{
+                    width: 100px;
+                    height: 80px;
+                }
+                dd {
+                    width: 100%;
+                    p{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    p:last-child{
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        border-top: 1px solid #c4c4c4;
+                        font-size: 12px;
+                        span{
+                            padding: 8px 0;
+                            box-sizing: border-box;
+                        }
+                        span:first-child{
+                            width: 65%;
+                            border-right: 1px solid #c4c4c4;
+                            color: rgb(0, 153, 255);
+                        }
+                        span:last-child{
+                            width: 35%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+                }
+              }
+              .d1 {
+                width: 200px;
+                height: 300px;
+              }
+              .d2 {
+                width: 200px;
+                height: 400px;
+              }
+            }
     }
 }
