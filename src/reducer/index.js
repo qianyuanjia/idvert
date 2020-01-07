@@ -1,4 +1,7 @@
-import login from './login.js'
+import login from './login'
+import ad_samples from './ad_samples'
+
 export {
-    login
+    login,
+    ad_samples,
 }

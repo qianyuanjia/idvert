@@ -19,7 +19,8 @@ const myPersistReducer = combineReducers({
     login: persistReducer(
         rootPersistConfig,
         rdc.login
-    )
+    ),
+    samples:rdc.ad_samples,
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
@@ -28,5 +29,7 @@ const store = createStore(
     myPersistReducer,
     composeEnhancers(applyMiddleware(promise, thunk))
 )
+
+window.store=store
 
 export { store }
