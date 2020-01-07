@@ -1,5 +1,4 @@
 import { handleActions } from 'redux-actions'
-import { AD_SAMPLES, } from '@/constants/actionTypes'
 
 const initState = {
     result: [],
@@ -7,7 +6,7 @@ const initState = {
 }
 
 export default handleActions({
-    [AD_SAMPLES]: (state, action) => {
+    AD_SAMPLES: (state, action) => {
         return {
             ...state, 
             result: action.payload.data.result.list,
