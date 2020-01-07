@@ -6,10 +6,6 @@ const initState = {
     count:''
 }
 
-const states = {
-    loading:true
-}
-
 export default handleActions({
     [AD_SAMPLES]: (state, action) => {
         return {

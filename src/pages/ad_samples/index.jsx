@@ -76,26 +76,35 @@ class extends React.PureComponent {
                     <div className='pages-hoc'>
                         {
                             data.length > 0 && data.map((v, k) => (
-                                <dl key={k} className={cs('d', { d1: k % 2 === 0, d2: k % 2 !== 0 })}>
-                                    <dt></dt>
-                                    <dd>
-                                        <p>{v.title}</p>
-                                        <p>{v.tags}</p>
-                                        <p>
-                                            <span>
-                                                {v.id%2==0 ? 'ssslver.cm' : 'mc.yandec.nu'}
-                                            </span>
-                                            <span>
-                                                {v.id%2==0 ? 'Learn More' : 'No Button'}
-                                            </span>
-                                        </p>
-                                    </dd>
-                                </dl>
+                                <Ddl v={v} key={k}/>
                             ))
                         }
                     </div>
                 </InfiniteScroll>
             </div>
+        )
+    }
+}
+
+class Ddl extends React.Component {
+    render() {
+        const { v } = this.props
+        return (
+            <dl key={v.id} className={cs('d', { d1: v.id % 2 === 0, d2: v.id % 2 !== 0 })}>
+                <dt></dt>
+                <dd>
+                    <p>{v.title}</p>
+                    <p>{v.tags}</p>
+                    <p>
+                        <span>
+                            {v.id % 2 == 0 ? 'ssslver.cm' : 'mc.yandec.nu'}
+                        </span>
+                        <span>
+                            {v.id % 2 == 0 ? 'Learn More' : 'No Button'}
+                        </span>
+                    </p>
+                </dd>
+            </dl>
         )
     }
 }
