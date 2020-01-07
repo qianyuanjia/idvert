@@ -15,6 +15,7 @@ import { home_form } from '@/actions/home'
 import { HOME_AD } from '@/constants/actionTypes'
 import { hump } from '@/utils/string'
 import moment from 'moment';
+import { Cart } from '@@'
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -79,7 +80,7 @@ class extends React.PureComponent {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                const { title, info: add, http, cod, content, typeImg, endTime: { _d }, upload } = values
+                const { title, info: addInfo, http, cod, content, typeImg, endTime: { _d }, upload } = values
 
                 let imgUrl = upload[0].response.url
                 let token = localStorage.getItem("token") || ""
@@ -89,7 +90,7 @@ class extends React.PureComponent {
 
                 let info = {
                     title,
-                    add,
+                    addInfo,
                     http,
                     cod,
                     content,
@@ -222,6 +223,7 @@ class extends React.PureComponent {
 
                     </Form>
                 </div>
+                <Cart />
             </div>
         )
     }
