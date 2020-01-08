@@ -10,11 +10,8 @@ import cs from 'classnames'
 import { Spin } from 'antd'
 import { POST_TABDATA } from '@/constants/actionTypes'
 import { Checkbox } from 'antd'
-<<<<<<< HEAD
-=======
 import selectJson from '@/assets/select'
 import './styles.less'
->>>>>>> 03af0242e6f55fbac15d9de516528a35bc21ffdd
 
 export default @connect(state => {
     return {
