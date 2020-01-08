@@ -80,12 +80,11 @@ class extends React.PureComponent {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 const { title = "", info: addInfo = "", http, cod, content, typeImg, endTime: { _d }, upload } = values
-
-                let imgUrl = upload[0].response.url
+                let imgUrl = upload[0].response.data.url
                 let token = localStorage.getItem("token") || ""
 
-                let endTime = moment(_d.getTime()).format('YYYY-MM-DD HH:mm:ss')
-                let createTime = moment(new Date().getTime()).format('YYYY-MM-DD HH:mm:ss')
+                let endTime = moment(_d.getTime()).format('YYYY-MM-DD')
+                let createTime = moment(new Date().getTime()).format('YYYY-MM-DD')
 
                 let info = {
                     title,
@@ -99,10 +98,9 @@ class extends React.PureComponent {
                     imgUrl,
                     save: 0, // 0 为收藏 1 收藏
                 }
-
                 this.props.home_sub({ token, info })
                     .then(res => {
-                        if (res.payload.data.code == 200) {
+                        if (res.payload.data.code === 200) {
                             message.success("添加成功")
                         } else {
                             message.error("添加失败")
@@ -165,11 +163,11 @@ class extends React.PureComponent {
                                 getValueFromEvent: normFile,
                             })(
                                 <Upload
-                                    name="avatar"
+                                    name="file"
                                     listType="picture-card"
                                     className="avatar-uploader"
                                     showUploadList={false}
-                                    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                                    action="http://49.235.147.95:3001/api/uploadFile"
                                     beforeUpload={beforeUpload}
                                     onChange={handleChange}
                                 >
