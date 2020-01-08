@@ -3,6 +3,7 @@ import React from 'react';
 import Select from '@/pages/form_inputs'
 import Times from '@/pages/form_time'
 import Collection_detail from '@/pages/collection_detail'
+import InfiniteScroll from '@@/InfiniteScroll'
 //redux
 import { connect } from 'react-redux'
 import { samples_list, } from '@/actions/samplesList'
@@ -11,7 +12,6 @@ import { POST_TABDATA } from '@/constants/actionTypes'
 //插件
 import Masonry from 'masonry-layout'
 import imagesLoaded from 'imagesloaded'
-import InfiniteScroll from '@@/InfiniteScroll'
 import { Checkbox } from 'antd'
 import selectJson from '@/assets/select'
 //样式
