@@ -1,5 +1,4 @@
 // 张慧敏 const
-export const SAMPLES_LIST = 'SAMPLES_LIST'
 
 // 李晓超 const
 export const LIST_DATA = 'LIST_DATA'

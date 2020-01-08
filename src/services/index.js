@@ -2,11 +2,6 @@
 import api from './api'
 import { requestPost } from '@/utils/request'
 
-const list = options => requestPost(api.Demo, options)
-export {
-    list
-}
-
 // 李晓超 api
 export const tables = options => {
     return requestPost(api.List, options)
