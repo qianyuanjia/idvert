@@ -97,7 +97,7 @@ class extends React.PureComponent {
                     createTime,
                     imgUrl,
                     save: 0, // 0 为收藏 1 收藏
-                }
+                }   
                 this.props.home_sub({ token, info })
                     .then(res => {
                         if (res.payload.data.code === 200) {
