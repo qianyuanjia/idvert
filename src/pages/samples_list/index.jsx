@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from '@/pages/form_inputs'
+import Times from '@/pages/form_time'
 import { connect } from 'react-redux'
 import { samples_list, } from '@/actions/samplesList'
 import { hump } from '@/utils/string'
@@ -83,13 +84,14 @@ class extends React.Component {
                         <Select title="Languge"/>
                         <Select title="Device Type"/>
                         <Select title="Ad Network"/>
+                        <Times />
                         <Select title="Height"/>
                         <Select title="Width"/>
                         <Select title="Affiliate Network"/>
                         <Select title="Vertivcal"/>
                         <Select title="Offer Name"/>
                         <Select title="Search Position"/>
-                        <Select title="Search Position"/>
+                        
                         <div className="checkout">
                             <Checkbox onChange={this.onChange}>
                                 CDN
