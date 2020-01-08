@@ -3,27 +3,25 @@ import Select from '@/pages/form_inputs'
 import { connect } from 'react-redux'
 import { samples_list, } from '@/actions/samplesList'
 import { hump } from '@/utils/string'
-import { SAMPLES_LIST } from '@/constants/actionTypes'
 import Masonry from 'masonry-layout'
 import InfiniteScroll from 'react-infinite-scroller'
 import imagesLoaded from 'imagesloaded'
 import cs from 'classnames'
 import { Spin } from 'antd'
-import './styles.less'
-
 import { POST_TABDATA } from '@/constants/actionTypes'
-import selectJson from '@/assets/select.json'
 import { Checkbox } from 'antd'
+<<<<<<< HEAD
+=======
+import selectJson from '@/assets/select'
+import './styles.less'
+>>>>>>> 03af0242e6f55fbac15d9de516528a35bc21ffdd
 
 export default @connect(state => {
     return {
         tabData: state.samplesList.tabData,
-        result: state.samplesList.result,
-        counts: state.samplesList.count
     }
 }, {
     // POST_TABDATA: samples_list.POST_TABDATA
-    samples: samples_list[hump(SAMPLES_LIST)],
     post_data: samples_list[hump(POST_TABDATA)]
 })
 class extends React.Component {
@@ -53,27 +51,23 @@ class extends React.Component {
         })
     }
     
-    componentDidMount() {
-        console.log(selectJson);
-        const token = localStorage.getItem('token')
-        this.props.post_data({ limit: 10, page: 1, token })
-    }   
-    
     onChange = (e) => {
         console.log(`checked = ${e.target.checked}`);
     }
 
     loadFunc = (page = 1) => {
         const { data, count } = this.state
+        const token = localStorage.getItem('token')
         if (count && data.length >= count) {
             return false
         }
-        this.props.samples({ page, limit: 10 })
+        this.props.post_data({ limit: 10, page, token })
             .then(res => {
-                const { result, counts } = this.props
+                console.log(this.props.tabData)
+                const { list, count } = this.props.tabData
                 this.setState({
-                    count: counts,
-                    data: [...data, ...result]
+                    count: count,
+                    data: [...data, ...list]
                 }, () => {
                     this.imagesOnload()
                 })
@@ -82,7 +76,6 @@ class extends React.Component {
     render() {
         const { hasmore, data, count } = this.state
         const { tabData } = this.props
-        console.log(tabData);
         return (
             <div className='samples_list'>
                 <div className="list_top">

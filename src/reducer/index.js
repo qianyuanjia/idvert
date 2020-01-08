@@ -6,5 +6,4 @@ export {
     login,
     samplesList,
     listData,
-    
 }
