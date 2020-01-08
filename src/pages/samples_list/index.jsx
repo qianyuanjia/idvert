@@ -15,7 +15,6 @@ import { POST_TABDATA } from '@/constants/actionTypes'
 import selectJson from '@/assets/select.json'
 import { Checkbox } from 'antd'
 
-
 export default @connect(state => {
     return {
         tabData: state.samplesList.tabData,

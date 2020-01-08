@@ -16,6 +16,9 @@ export default class extends PureComponent {
             save = "save",
             cod = "cod"
         } = this.props 
+
+        
+        
         return (
             <div className="cart-cpt">
                 <div className="save">{save}</div>
@@ -38,7 +41,7 @@ export default class extends PureComponent {
                 }
                 <div className="pic-box">
                     {
-                        imgurl
+                        <img src={imgurl}/>
                     }
                     <div className="pic-mack">
                         <div className="pic-alt">{typeImg}</div>

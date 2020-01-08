@@ -67,7 +67,7 @@ class extends React.PureComponent {
         return isJpgOrPng && isLt2M;
     }
     normFile = e => {
-        // console.log('Upload event:', e);
+        console.log('Upload event:', e);
         if (Array.isArray(e)) {
             return e;
         }
