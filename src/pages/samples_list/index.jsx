@@ -82,7 +82,6 @@ class extends React.Component {
     render() {
         const { hasmore, data, count } = this.state
         const { tabData } = this.props
-        console.log(tabData);
         return (
             <div className='samples_list'>
                 <div className="list_top">
