@@ -1,4 +1,6 @@
 import Cart from '@@/Cart'
+import Formad from '@@/Formad'
 export {
-    Cart
+    Cart,
+    Formad
 }

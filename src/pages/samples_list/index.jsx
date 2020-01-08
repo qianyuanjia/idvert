@@ -88,7 +88,7 @@ class extends React.Component {
                 <div className="list_top">
                     <div>Permium Search: </div>
                     <div>
-                        <Select title="Search Position"/>
+                        <Select title="Search Position" data={selectJson}/>
                         <Select title="Geo"/>
                         <Select title="Languge"/>
                         <Select title="Device Type"/>
