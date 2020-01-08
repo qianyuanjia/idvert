@@ -1,14 +1,20 @@
 import React from 'react';
+//引组件
 import Select from '@/pages/form_inputs'
+import Times from '@/pages/form_time'
+import Collection_detail from '@/pages/collection_detail'
+//redux
 import { connect } from 'react-redux'
 import { samples_list, } from '@/actions/samplesList'
 import { hump } from '@/utils/string'
+import { POST_TABDATA } from '@/constants/actionTypes'
+//插件
 import Masonry from 'masonry-layout'
 import imagesLoaded from 'imagesloaded'
-import { POST_TABDATA } from '@/constants/actionTypes'
+import InfiniteScroll from '@@/InfiniteScroll'
 import { Checkbox } from 'antd'
 import selectJson from '@/assets/select'
-import InfiniteScroll from '@@/InfiniteScroll'
+//样式
 import './styles.less'
 
 export default @connect(state => {
@@ -25,7 +31,8 @@ class extends React.Component {
         this.state = {
             hasmore: true,
             count: 0,
-            data: []
+            data: [],
+            bool: false,
         }
         this.loadFunc()
     }
@@ -34,6 +41,12 @@ class extends React.Component {
         elLoad.on('always', () => {
             this.advanceWidth()
         })
+    }
+
+    //点击收藏
+    uncollect = () => {
+        const { bool } = this.state
+        this.setState({ bool: !bool })
     }
 
     advanceWidth = () => {
@@ -79,13 +92,14 @@ class extends React.Component {
                         <Select title="Languge"/>
                         <Select title="Device Type"/>
                         <Select title="Ad Network"/>
+                        <Times />
                         <Select title="Height"/>
                         <Select title="Width"/>
                         <Select title="Affiliate Network"/>
                         <Select title="Vertivcal"/>
                         <Select title="Offer Name"/>
                         <Select title="Search Position"/>
-                        <Select title="Search Position"/>
+                        
                         <div className="checkout">
                             <Checkbox onChange={this.onChange}>
                                 CDN
@@ -95,6 +109,10 @@ class extends React.Component {
                 </div>
                 <div className="list_title">
                     SortBy:<p>ID</p><p>时间</p>
+                    <Collection_detail 
+                        click={this.uncollect} 
+                        bool={this.state.bool}
+                    />
                 </div>
                 <div className="list_body">
                     <InfiniteScroll 
