@@ -1,16 +1,20 @@
 import React from 'react';
+//引组件
 import Select from '@/pages/form_inputs'
+import Times from '@/pages/form_time'
+import Collection_detail from '@/pages/collection_detail'
+import InfiniteScroll from '@@/InfiniteScroll'
+//redux
 import { connect } from 'react-redux'
 import { samples_list, } from '@/actions/samplesList'
 import { hump } from '@/utils/string'
-import Masonry from 'masonry-layout'
-import InfiniteScroll from 'react-infinite-scroller'
-import imagesLoaded from 'imagesloaded'
-import cs from 'classnames'
-import { Spin } from 'antd'
 import { POST_TABDATA } from '@/constants/actionTypes'
+//插件
+import Masonry from 'masonry-layout'
+import imagesLoaded from 'imagesloaded'
 import { Checkbox } from 'antd'
 import selectJson from '@/assets/select'
+//样式
 import './styles.less'
 
 export default @connect(state => {
@@ -27,7 +31,8 @@ class extends React.Component {
         this.state = {
             hasmore: true,
             count: 0,
-            data: []
+            data: [],
+            bool: false,
         }
         this.loadFunc()
     }
@@ -36,6 +41,12 @@ class extends React.Component {
         elLoad.on('always', () => {
             this.advanceWidth()
         })
+    }
+
+    //点击收藏
+    uncollect = () => {
+        const { bool } = this.state
+        this.setState({ bool: !bool })
     }
 
     advanceWidth = () => {
@@ -60,7 +71,6 @@ class extends React.Component {
         }
         this.props.post_data({ limit: 10, page, token })
             .then(res => {
-                console.log(this.props.tabData)
                 const { list, count } = this.props.tabData
                 this.setState({
                     count: count,
@@ -72,7 +82,6 @@ class extends React.Component {
     }
     render() {
         const { hasmore, data, count } = this.state
-        const { tabData } = this.props
         return (
             <div className='samples_list'>
                 <div className="list_top">
@@ -83,13 +92,14 @@ class extends React.Component {
                         <Select title="Languge"/>
                         <Select title="Device Type"/>
                         <Select title="Ad Network"/>
+                        <Times />
                         <Select title="Height"/>
                         <Select title="Width"/>
                         <Select title="Affiliate Network"/>
                         <Select title="Vertivcal"/>
                         <Select title="Offer Name"/>
                         <Select title="Search Position"/>
-                        <Select title="Search Position"/>
+                        
                         <div className="checkout">
                             <Checkbox onChange={this.onChange}>
                                 CDN
@@ -99,48 +109,20 @@ class extends React.Component {
                 </div>
                 <div className="list_title">
                     SortBy:<p>ID</p><p>时间</p>
+                    <Collection_detail 
+                        click={this.uncollect} 
+                        bool={this.state.bool}
+                    />
                 </div>
                 <div className="list_body">
-                    <InfiniteScroll
-                        loadMore={this.loadFunc}
-                        hasMore={hasmore}
-                        loader={<div className="loader" key={0}>{count >= data.length ? <Spin /> : '我也是有底线的'} </div>}
-                        useWindow={false}
-                        initialLoad={false}
-                    >
-                        <div className='pages-hoc'>
-                            {
-                                data.length > 0 && data.map((v, k) => (
-                                    <Ddl v={v} key={k} />
-                                ))
-                            }
-                        </div>
-                    </InfiniteScroll>
+                    <InfiniteScroll 
+                        hasmore={hasmore}
+                        data={data}
+                        count={count}
+                        loadFunc={this.loadFunc}
+                    />
                 </div>
             </div>
-        )
-    }
-}
-
-class Ddl extends React.Component {
-    render() {
-        const { v } = this.props
-        return (
-            <dl key={v.id} className={cs('d', { d1: v.id % 2 === 0, d2: v.id % 2 !== 0 })}>
-                <dt></dt>
-                <dd>
-                    <p>{v.title}</p>
-                    <p>{v.tags}</p>
-                    <p>
-                        <span>
-                            {v.id % 2 == 0 ? 'ssslver.cm' : 'mc.yandec.nu'}
-                        </span>
-                        <span>
-                            {v.id % 2 == 0 ? 'Learn More' : 'No Button'}
-                        </span>
-                    </p>
-                </dd>
-            </dl>
         )
     }
 }

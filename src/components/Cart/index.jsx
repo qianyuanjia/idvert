@@ -15,50 +15,57 @@ export default class extends PureComponent {
             endTime = "endTime",
             save = "save",
             cod = "cod"
-        } = this.props 
+        } = this.props
 
+        console.log(save);
         
-        
+
         return (
             <div className="cart-cpt">
                 <div className="save">{save}</div>
                 {
                     title != "" && (
                         <>
-                        <div className="head-title">
-                            <div className="head-img">
-                                <img src={headImg} alt=""/>
+                            <div className="head-title">
+                                <div className="head-img">
+                                    <img src={imgurl} alt="" />
+                                </div>
+                                <div className="title">
+                                    <h3>{title}</h3>
+                                </div>
                             </div>
-                            <div className="title">
-                                <h3>{title}</h3>
+                            <div className="text-info">
+                                {addInfo}
                             </div>
-                        </div>
-                        <div className="text-info">
-                            {addInfo}
-                        </div>
                         </>
                     )
                 }
                 <div className="pic-box">
                     {
-                        <img src={imgurl}/>
+                        <img src={imgurl} />
                     }
                     <div className="pic-mack">
                         <div className="pic-alt">{typeImg}</div>
                         <div className="pic-alt">{cod}</div>
                     </div>
-                </div>  
+                </div>
                 <div className="content">
-                    {
-                        content
-                    }
+                    <div className='content_text'>
+                        {
+                            content
+                        }
+                    </div>
                     <div className="timer">
                         {createTime} - {endTime}
                     </div>
                 </div>
                 <div className="http-fot">
                     <div className="http">
-                        {http}
+                        {
+                            <a href='#'>
+                                {http}
+                            </a>
+                        }
                     </div>
                     <div className="move">
                         Leam More

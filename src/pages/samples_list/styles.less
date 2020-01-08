@@ -28,8 +28,12 @@
             >div{
                 width: 20%;
                 height: 20px;
-                div{ width: 95% !important; height: 20px;}
-                label{margin-top: 5px;}
+                div{ 
+                    width: 95% !important;
+                    height: 20px;
+                    display: flex;
+                    align-items: center;
+                }
             }
         }
     }
@@ -69,51 +73,92 @@
                 background: white;
                 display: flex;
                 flex-direction: column;
-                justify-content: flex-end;
                 align-items: center;
+                padding: 8px;
+                box-sizing: border-box;
+                position: relative;
+                .hua,.staic{
+                    position: absolute;
+                    display: inline-block;
+                    border: 1px solid white;
+                    border-radius: 5px;
+                    font-size: 13px;
+                    padding:0 8px;
+                    box-sizing: border-box;
+                    color: white;
+                    background: rgba(0, 0, 0, 0.473);
+                    display: none;
+                }
+                .cang{
+                    position: absolute;
+                    border: 1px solid white;
+                    border-radius: 5px;
+                    font-size: 13px;
+                    box-sizing: border-box;
+                    color: white;
+                    background: rgba(0, 0, 0, 0.473);
+                    left: 10px;
+                    top: 10px;
+                    padding: 0 5px;
+                    box-sizing: border-box;
+                    display: none;
+                }
+                .hua{
+                    top: 35px;
+                    right: 10px;
+                }
+                .staic{
+                    top: 10px;
+                    right: 10px;
+                }
                 dt{
-                    width: 100px;
-                    height: 80px;
+                    width: 100%;
+                    padding: 0 0 10px;
+                    img{
+                        width: 100%;
+                        height: auto;
+                        display: block;
+                    }
                 }
                 dd {
                     width: 100%;
+                    flex: 1;
                     p{
                         display: flex;
                         align-items: center;
-                        justify-content: center;
+                        justify-content: space-between;
+                        font-size: 13px;
+                    }
+                    p:nth-child(2){
+                        padding: 10px 0;
+                        box-sizing: border-box;
+                        font-size: 14px;
                     }
                     p:last-child{
                         width: 100%;
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
-                        border-top: 1px solid #c4c4c4;
-                        font-size: 12px;
-                        span{
-                            padding: 8px 0;
-                            box-sizing: border-box;
-                        }
-                        span:first-child{
-                            width: 65%;
-                            border-right: 1px solid #c4c4c4;
-                            color: rgb(0, 153, 255);
-                        }
-                        span:last-child{
-                            width: 35%;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                        }
+                        padding: 10px 0;
+                        box-sizing: border-box;
+                        color: rgb(0, 119, 255);
                     }
                 }
               }
+              .d:hover .hua{
+                  display: block;
+              }
+              .d:hover .staic{
+                display: block;
+              }
+              .d:hover .cang{
+                display: block;
+              }
               .d1 {
                 width: 200px;
-                height: 300px;
               }
               .d2 {
                 width: 200px;
-                height: 400px;
               }
             }
     }
