@@ -1,24 +1,21 @@
 import React, { Component } from 'react';
 import { Icon } from 'antd'
+import './style.less'
 export default class index extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            bool: false
-        }
-    }
     
-
     render() {
-        const { bool } = this.state
+        const { bool, click } = this.props
         return (
-            <div className="uncollect">
+            <div className="uncollect" onClick={click}>
                 {
                     bool
-                        ?<div><Icon type="star" /> Uncollect</div>
-                        :<div>
-                            <Icon type="star" theme="filled" /> Uncollect
-                         </div>
+                        ?<>
+                            <Icon type="star" theme="filled" /> 
+                            Uncollect
+                         </>
+                        :<>
+                            <Icon type="star" /> Collect
+                         </>
                 }
             </div>
         );

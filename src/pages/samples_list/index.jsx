@@ -1,17 +1,21 @@
 import React from 'react';
+//引组件
 import Select from '@/pages/form_inputs'
 import Times from '@/pages/form_time'
+import Collection_detail from '@/pages/collection_detail'
+//redux
 import { connect } from 'react-redux'
 import { samples_list, } from '@/actions/samplesList'
 import { hump } from '@/utils/string'
+import { POST_TABDATA } from '@/constants/actionTypes'
+//插件
 import Masonry from 'masonry-layout'
 import InfiniteScroll from 'react-infinite-scroller'
 import imagesLoaded from 'imagesloaded'
 import cs from 'classnames'
-import { Spin } from 'antd'
-import { POST_TABDATA } from '@/constants/actionTypes'
-import { Checkbox } from 'antd'
+import { Spin, Checkbox } from 'antd'
 import selectJson from '@/assets/select'
+//样式
 import './styles.less'
 
 export default @connect(state => {
@@ -28,7 +32,8 @@ class extends React.Component {
         this.state = {
             hasmore: true,
             count: 0,
-            data: []
+            data: [],
+            bool: false,
         }
         this.loadFunc()
     }
@@ -37,6 +42,12 @@ class extends React.Component {
         elLoad.on('always', () => {
             this.advanceWidth()
         })
+    }
+
+    //点击收藏
+    uncollect = () => {
+        const { bool } = this.state
+        this.setState({ bool: !bool })
     }
 
     advanceWidth = () => {
@@ -61,7 +72,6 @@ class extends React.Component {
         }
         this.props.post_data({ limit: 10, page, token })
             .then(res => {
-                console.log(this.props.tabData)
                 const { list, count } = this.props.tabData
                 this.setState({
                     count: count,
@@ -73,7 +83,6 @@ class extends React.Component {
     }
     render() {
         const { hasmore, data, count } = this.state
-        const { tabData } = this.props
         return (
             <div className='samples_list'>
                 <div className="list_top">
@@ -101,6 +110,10 @@ class extends React.Component {
                 </div>
                 <div className="list_title">
                     SortBy:<p>ID</p><p>时间</p>
+                    <Collection_detail 
+                        click={this.uncollect} 
+                        bool={this.state.bool}
+                    />
                 </div>
                 <div className="list_body">
                     <InfiniteScroll
