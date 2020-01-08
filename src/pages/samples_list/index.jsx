@@ -10,6 +10,7 @@ import cs from 'classnames'
 import { Spin } from 'antd'
 import { POST_TABDATA } from '@/constants/actionTypes'
 import { Checkbox } from 'antd'
+import selectJson from '@/assets/select'
 import './styles.less'
 
 export default @connect(state => {
@@ -77,7 +78,7 @@ class extends React.Component {
                 <div className="list_top">
                     <div>Permium Search: </div>
                     <div>
-                        <Select title="Search Position"/>
+                        <Select title="Search Position" data={selectJson}/>
                         <Select title="Geo"/>
                         <Select title="Languge"/>
                         <Select title="Device Type"/>
