@@ -4,8 +4,6 @@ import listData from './listdata'
 
 export {
     login,
-    ad_samples,
     samplesList,
     listData,
-    
 }
