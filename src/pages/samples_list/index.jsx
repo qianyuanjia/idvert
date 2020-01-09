@@ -68,7 +68,7 @@ class extends React.Component {
     jump = value => {
         const { detils, history } = this.props
         detils(value)
-        history.push('/info')
+        //history.push('/info')
     }
 
     loadFunc = (page = 1) => {
