@@ -4,8 +4,8 @@ const { Option } = Select;
 
 export default class index extends Component {
 
-    handleChange = (value) => {
-        console.log(`selected ${value}`);
+    handleChange = value => {
+        console.log(value)
     }
 
     render() {
@@ -18,6 +18,7 @@ export default class index extends Component {
                     placeholder={title}
                     onChange={this.handleChange}
                     optionLabelProp="label"
+                    maxTagCount={1}
                 >
                     <Option value="china" label="China">
                         <span role="img" aria-label="China">

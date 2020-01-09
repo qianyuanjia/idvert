@@ -18,7 +18,10 @@ export default class extends Component {
                 <div className='pages-hoc' >
                     {
                         data.length > 0 && data.map((v, k) => (
-                            <Card v={v} key={k} click={click}/>
+                            <Card 
+                                v={v} 
+                                key={k} 
+                            />
                         ))
                     }
                 </div>

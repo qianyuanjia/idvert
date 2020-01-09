@@ -20,21 +20,21 @@
             text-align: right;
             padding-right: 10px;
             box-sizing: border-box;
-        }
-        >div:last-child{
+       }
+        .select-s{
             flex: 1;
+            height: 30px;
             display: flex;
             flex-wrap: wrap;
             padding-top: 5px;
             box-sizing: border-box;
             >div{
                 width: 20%;
-                height: 20px;
+                height: 100%;
+                margin: 5px 0;
                 div{ 
-                    width: 95% !important;
-                    height: 20px;
-                    display: flex;
-                    align-items: center;
+                    width: 95%;
+                    height: 100%;
                 }
             }
         }
@@ -79,6 +79,7 @@
                 padding: 8px;
                 box-sizing: border-box;
                 position: relative;
+                transition: .7s;
                 .hua,.staic{
                     position: absolute;
                     display: inline-block;
@@ -89,33 +90,40 @@
                     box-sizing: border-box;
                     color: white;
                     background: rgba(0, 0, 0, 0.473);
-                    display: none;
                 }
-                .cang{
+                .uncollect{
                     position: absolute;
-                    border: 1px solid white;
-                    border-radius: 5px;
-                    font-size: 13px;
-                    box-sizing: border-box;
-                    color: white;
-                    background: rgba(0, 0, 0, 0.473);
                     left: 10px;
                     top: 10px;
-                    padding: 0 5px;
-                    box-sizing: border-box;
+                    font-size: 14px;
                     display: none;
                 }
                 .hua{
-                    top: 35px;
+                    top: 10px;
                     right: 10px;
                 }
                 .staic{
-                    top: 10px;
+                    top: 35px;
                     right: 10px;
+                    background: rgb(90, 128, 0);
                 }
                 dt{
                     width: 100%;
                     padding: 0 0 10px;
+                    .head{
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 8px;
+                        color: rgb(0, 140, 255);
+                        font-size: 14px;
+                        img{
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 10px;
+                            margin-right: 8px;
+                        }
+                    }
                     img{
                         width: 100%;
                         height: auto;
@@ -147,13 +155,12 @@
                     }
                 }
               }
-              .d:hover .hua{
-                  display: block;
+              .d:hover{
+                transform: scale(1.01);
+                box-shadow: 10px 10px 3px #ccc;
+                cursor: pointer;
               }
-              .d:hover .staic{
-                display: block;
-              }
-              .d:hover .cang{
+              .d:hover .uncollect{
                 display: block;
               }
               .d1 {
