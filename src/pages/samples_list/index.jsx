@@ -58,11 +58,10 @@ class extends React.Component {
     
     //点击跳详情
     jump = value => {
+        console.log(value);
         const { detils, history } = this.props
         detils(value)
-        console.log(value);
-        
-        //history.push('/info')
+        history.push('/info')
     }
 
     loadFunc = (page = 1) => {
