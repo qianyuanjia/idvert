@@ -8,7 +8,7 @@ import InfiniteScroll from '@@/InfiniteScroll'
 import { connect } from 'react-redux'
 import { samples_list, } from '@/actions/samplesList'
 import { hump } from '@/utils/string'
-import { POST_TABDATA } from '@/constants/actionTypes'
+import { POST_TABDATA, DETAILS } from '@/constants/actionTypes'
 //插件
 import Masonry from 'masonry-layout'
 import imagesLoaded from 'imagesloaded'
@@ -23,7 +23,8 @@ export default @connect(state => {
     }
 }, {
     // POST_TABDATA: samples_list.POST_TABDATA
-    post_data: samples_list[hump(POST_TABDATA)]
+    post_data: samples_list[hump(POST_TABDATA)],
+    detils: samples_list[hump(DETAILS)]
 })
 class extends React.Component {
     constructor(props) {
@@ -62,10 +63,10 @@ class extends React.Component {
     onChange = (e) => {
         console.log(`checked = ${e.target.checked}`);
     }
-
+    //点击跳详情
     jump = value => {
         console.log(value);
-        
+        this.props.detils(value)
     }
 
     loadFunc = (page = 1) => {
