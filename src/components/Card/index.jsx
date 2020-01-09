@@ -19,11 +19,20 @@ class extends React.Component {
         const route = this.props.location.pathname
         const path = '/formnative/formlist'
         return (
+<<<<<<< HEAD
             <dl key={v.id} className={cs('d', { d1: v.id % 2 === 0, d2: v.id % 2 !== 0 })} style={{ width: width }}>
                 <Collection_detail
                     click={this.uncollect}
                     bool={this.state.bool}
                 />
+=======
+            <dl 
+                key={v.id} 
+                className={cs('d', { d1: v.id % 2 === 0, d2: v.id % 2 !== 0 })}
+                onClick={() => {this.props.click(q)}}
+            >
+                <span className='cang'><Icon type="star" />收藏</span>
+>>>>>>> f8dfebb5a7281ae877678562f797d8b5f388f641
                 <span className='staic'>{q.typeImg}</span>
                 <span className='hua'>{q.cod}</span>
                 <p>{route === path ? q.title : ''}</p>
