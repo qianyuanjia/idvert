@@ -5,10 +5,10 @@ export default class extends PureComponent {
     render() {
         const {
             title = "test",
-            headImg = "https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=289446672,1693173871&fm=26&gp=0.jpg",
+            headImg = "https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2474359490,1160804813&fm=26&gp=0.jpg",
             content = "content",
             typeImg = "type",
-            imgurl = "imgurl",
+            imgurl = "https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2474359490,1160804813&fm=26&gp=0.jpg",
             addInfo = "addInfo",
             http = "test",
             createTime = "createTime",
@@ -16,10 +16,6 @@ export default class extends PureComponent {
             save = "save",
             cod = "cod"
         } = this.props
-
-        console.log(save);
-        
-
         return (
             <div className="cart-cpt">
                 <div className="save">{save}</div>
@@ -41,9 +37,9 @@ export default class extends PureComponent {
                     )
                 }
                 <div className="pic-box">
-                    {
+                    <div className="pic-img">
                         <img src={imgurl} />
-                    }
+                    </div>
                     <div className="pic-mack">
                         <div className="pic-alt">{typeImg}</div>
                         <div className="pic-alt">{cod}</div>
