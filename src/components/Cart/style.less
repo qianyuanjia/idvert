@@ -15,6 +15,11 @@
         transform: scale(1.01);
         cursor: pointer;
     }
+    &:hover .save {
+        opacity: 1;
+    }
+   
+
     .head-title {
         width: 100%;
         display: flex;
@@ -81,10 +86,11 @@
         top: 5px;
         right: 5px;
         border-radius: 4px;
-        background: #000;
         color: #fff;
-        padding: 0 10px;
         box-sizing: border-box;
+        z-index: 10;
+        opacity: 0;
+
     }
     .http-fot {
         background: ;
@@ -117,8 +123,8 @@
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
-            -webkit-line-clamp: 8;
-            line-clamp: 8;
+            -webkit-line-clamp: 4;
+            line-clamp: 4;
             -webkit-box-orient: vertical;
         }
        

@@ -100,7 +100,9 @@ class extends React.PureComponent {
                 }   
                 this.props.home_sub({ token, info })
                     .then(res => {
-                        if (res.payload.data.code === 200) {
+                        console.log(res);
+                        
+                        if (res.payload.data.code === '200') {
                             message.success("添加成功")
                         } else {
                             message.error("添加失败")

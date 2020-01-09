@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react'
 import "./style.less"
+import Star from '@@/Star'
 
 export default class extends PureComponent {
+
     render() {
         const {
             title = "test",
@@ -9,7 +11,7 @@ export default class extends PureComponent {
             content = "content",
             typeImg = "type",
             imgurl = "imgurl",
-            addInfo = "addInfo",
+            addInfo = "AddInfo",
             http = "test",
             createTime = "createTime",
             endTime = "endTime",
@@ -17,12 +19,9 @@ export default class extends PureComponent {
             cod = "cod"
         } = this.props
 
-        console.log(save);
-        
-
         return (
             <div className="cart-cpt">
-                <div className="save">{save}</div>
+                <div className="save">{<Star bool={save} />}</div>
                 {
                     title != "" && (
                         <>

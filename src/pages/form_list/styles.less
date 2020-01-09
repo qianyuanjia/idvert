@@ -3,19 +3,54 @@
     height: 100%;
     overflow: auto;
 
+    padding: 20px;
+    box-sizing: border-box;
 
     .form_list_top {
         width: 100%;
-        height: 300px;
+        height: auto;
         background: #fff;
+        padding: 10px;
+        border-radius: 7px;
+        box-sizing: border-box;
+
+        .form_list_top_Div {
+            width: 100%;
+            height: auto;
+            background: red;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 20px;
+            display: flex;
+            box-sizing: border-box;
+
+            .form_list_top_div_List {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                .form_list_top_div_List_title {
+                    width: 200px;
+                    font-size: 17px;
+                    text-align: right;
+                    font-weight: bold;
+                }
+                .form_list_top_div_content {
+                    flex: 1;
+                    font-size: 16px;
+                    padding-left: 10px;
+                    box-sizing: border-box;
+                }
+            }
+        }
     }
 
     .form_list_search {
         margin-top: 20px;
         box-sizing: border-box;
         width: 100%;
-        height: 50px;
-        background: gray;
+        height: auto;
+        padding: 10px 0;
+        box-sizing: border-box;
+        font-weight: bold;
     }
 
         
