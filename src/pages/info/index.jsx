@@ -22,6 +22,7 @@ class extends React.PureComponent {
                         content={details.http}
                         createTime={details.createTime}
                         endTime={details.endTime}
+                        typeImg={details.typeImg}
                     />
                     <div className="info-bottom"></div>
                 </div>
