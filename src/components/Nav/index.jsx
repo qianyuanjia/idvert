@@ -1,15 +1,35 @@
 import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom';
-import cs from 'classnames';
+import { Menu } from 'antd'
 import './style.less';
 
 export default class extends PureComponent {
+    state = {
+        current: '0',
+    };
+
+    handleClick = e => {
+        console.log('click ', e);
+        this.setState({
+            current: e.key,
+        });
+    };
     render() {
-        const { props: { title = "", path = "#", color } } = this
+        const { 
+            props: { data = [] }, 
+            state: { current },
+            handleClick 
+        } = this
         return (
-            <Link className={cs({ component_nav: true ,component_nav_black: color })} to={path}>
-                {title}
-            </Link>
+            <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
+                {
+                    data.map((res, key) => (
+                        <Menu.Item key={key}>
+                            <Link to={res.path} style={{color: res.color}}>{res.title}</Link>
+                        </Menu.Item>
+                    ))
+                }
+            </Menu>
         )
     }
 }

@@ -1,30 +1,41 @@
 import React from 'react';
 import PrivateRoute from '@@/PrivateRoute'
-import Nav from '@@/Nav';
+import { Nav } from '@@'
 import login from '@/assets/images/logo.png'
 import './styles.less'
 
+const nav = [
+    {
+        id: 1,
+        title: "formnative",
+        path: "/formnative",
+        color: '#fff'
+    },
+    {
+        id: 2,
+        title: "homead",
+        path: "/homead",
+        color: '#fff'
+    },
+    {
+        id: 3,
+        title: "adSamples",
+        path: "/adSamples",
+        color: '#fff'
+    }
+]
+
 export default class extends React.PureComponent {
+    
     render() {
         return (
             <div className='layouts_home'>
                 <div className="header_nav">
                     <div className="logo">
-                        <img src={login} alt="logo"/>
+                        <img src={login} alt="logo" />
                     </div>
                     <div className="nav">
-                        <Nav
-                            path="/formnative"
-                            title="formnative"
-                        />
-                        <Nav
-                            path="/homead"
-                            title="homead"
-                        />
-                        <Nav
-                            path="/adSamples"
-                            title="adSamples"
-                        />
+                        <Nav data={nav} />
                     </div>
                     <div className="search">
                         <input className="allSearch" type="text" />
