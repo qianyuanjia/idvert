@@ -2,7 +2,6 @@ import React from 'react';
 //引组件
 import Select from '@/pages/form_inputs'
 import Times from '@/pages/form_time'
-import Collection_detail from '@/pages/collection_detail'
 import InfiniteScroll from '@@/InfiniteScroll'
 //redux
 import { connect } from 'react-redux'
@@ -32,7 +31,6 @@ class extends React.Component {
             hasmore: true,
             count: 0,
             data: [],
-            bool: false,
         }
         this.loadFunc()
     }
@@ -41,12 +39,6 @@ class extends React.Component {
         elLoad.on('always', () => {
             this.advanceWidth()
         })
-    }
-
-    //点击收藏
-    uncollect = () => {
-        const { bool } = this.state
-        this.setState({ bool: !bool })
     }
 
     advanceWidth = () => {
@@ -86,7 +78,7 @@ class extends React.Component {
             <div className='samples_list'>
                 <div className="list_top">
                     <div>Permium Search: </div>
-                    <div>
+                    <div className='select-s'>
                         <Select title="Search Position" data={selectJson}/>
                         <Select title="Geo"/>
                         <Select title="Languge"/>
@@ -109,10 +101,6 @@ class extends React.Component {
                 </div>
                 <div className="list_title">
                     SortBy:<p>ID</p><p>时间</p>
-                    <Collection_detail 
-                        click={this.uncollect} 
-                        bool={this.state.bool}
-                    />
                 </div>
                 <div className="list_body">
                     <InfiniteScroll 

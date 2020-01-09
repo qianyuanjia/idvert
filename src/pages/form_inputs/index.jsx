@@ -4,8 +4,8 @@ const { Option } = Select;
 
 export default class index extends Component {
 
-    handleChange = (value) => {
-        console.log(`selected ${value}`);
+    handleChange = value => {
+        console.log(value)
     }
 
     render() {
@@ -18,6 +18,7 @@ export default class index extends Component {
                     placeholder="select one country"
                     onChange={this.handleChange}
                     optionLabelProp="label"
+                    maxTagCount={2}
                 >
                     <Option value="china" label="China">
                         China (中国)
