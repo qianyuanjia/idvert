@@ -2,13 +2,12 @@ import React from 'react';
 //引组件
 import Select from '@/pages/form_inputs'
 import Times from '@/pages/form_time'
-import Collection_detail from '@/pages/collection_detail'
 import InfiniteScroll from '@@/InfiniteScroll'
 //redux
 import { connect } from 'react-redux'
 import { samples_list, } from '@/actions/samplesList'
 import { hump } from '@/utils/string'
-import { POST_TABDATA } from '@/constants/actionTypes'
+import { POST_TABDATA, DETAILS } from '@/constants/actionTypes'
 //插件
 import Masonry from 'masonry-layout'
 import imagesLoaded from 'imagesloaded'
@@ -23,7 +22,8 @@ export default @connect(state => {
     }
 }, {
     // POST_TABDATA: samples_list.POST_TABDATA
-    post_data: samples_list[hump(POST_TABDATA)]
+    post_data: samples_list[hump(POST_TABDATA)],
+    detils: samples_list[hump(DETAILS)]
 })
 class extends React.Component {
     constructor(props) {
@@ -32,7 +32,6 @@ class extends React.Component {
             hasmore: true,
             count: 0,
             data: [],
-            bool: false,
         }
         this.loadFunc()
     }
@@ -41,12 +40,6 @@ class extends React.Component {
         elLoad.on('always', () => {
             this.advanceWidth()
         })
-    }
-
-    //点击收藏
-    uncollect = () => {
-        const { bool } = this.state
-        this.setState({ bool: !bool })
     }
 
     advanceWidth = () => {
@@ -61,6 +54,13 @@ class extends React.Component {
     
     onChange = (e) => {
         console.log(`checked = ${e.target.checked}`);
+    }
+    
+    //点击跳详情
+    jump = value => {
+        const { detils, history } = this.props
+        detils(value)
+        history.push('/info')
     }
 
     loadFunc = (page = 1) => {
@@ -86,7 +86,7 @@ class extends React.Component {
             <div className='samples_list'>
                 <div className="list_top">
                     <div>Permium Search: </div>
-                    <div>
+                    <div className='select-s'>
                         <Select title="Search Position" data={selectJson}/>
                         <Select title="Geo"/>
                         <Select title="Languge"/>
@@ -109,10 +109,6 @@ class extends React.Component {
                 </div>
                 <div className="list_title">
                     SortBy:<p>ID</p><p>时间</p>
-                    <Collection_detail 
-                        click={this.uncollect} 
-                        bool={this.state.bool}
-                    />
                 </div>
                 <div className="list_body">
                     <InfiniteScroll 
@@ -120,6 +116,7 @@ class extends React.Component {
                         data={data}
                         count={count}
                         loadFunc={this.loadFunc}
+                        click={this.jump}
                     />
                 </div>
             </div>

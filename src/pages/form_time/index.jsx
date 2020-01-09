@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { DatePicker } from 'antd';
-const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
 
 export default class index extends Component {
 

@@ -14,6 +14,9 @@
         box-shadow: 10px 10px 3px #ccc;
         transform: scale(1.01);
         cursor: pointer;
+        .save {
+            display: block;
+        }
     }
     &:hover .save {
         opacity: 1;
@@ -52,6 +55,13 @@
     .pic-box {
         position: relative;
         width: 100%;
+        .pic-img {
+            width: 100%;
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
         .pic-mack {
             position: absolute;
             top: 2px;
@@ -82,6 +92,7 @@
         
     }
     .save {
+        display: none;
         position: absolute;
         top: 5px;
         right: 5px;

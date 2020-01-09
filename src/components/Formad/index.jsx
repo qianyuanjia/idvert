@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import { home_form } from '@/actions/home'
 import { HOME_AD } from '@/constants/actionTypes'
 import { hump } from '@/utils/string'
+import shortid from 'shortid'
 import moment from 'moment';
 
 const { Option } = Select;
@@ -87,6 +88,7 @@ class extends React.PureComponent {
                 let createTime = moment(new Date().getTime()).format('YYYY-MM-DD')
 
                 let info = {
+                    id: shortid.generate(),
                     title,
                     addInfo,
                     http,

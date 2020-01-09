@@ -6,8 +6,9 @@ export default class extends PureComponent {
 
     render() {
         const {
+            id="test",
             title = "test",
-            headImg = "https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=289446672,1693173871&fm=26&gp=0.jpg",
+            headImg = "https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2474359490,1160804813&fm=26&gp=0.jpg",
             content = "content",
             typeImg = "type",
             imgurl = "imgurl",
@@ -16,9 +17,9 @@ export default class extends PureComponent {
             createTime = "createTime",
             endTime = "endTime",
             save = "save",
-            cod = "cod"
+            cod = "cod",
+            isInfo = () => {}
         } = this.props
-
         return (
             <div className="cart-cpt">
                 <div className="save">{<Star bool={save} />}</div>
@@ -40,9 +41,9 @@ export default class extends PureComponent {
                     )
                 }
                 <div className="pic-box">
-                    {
-                        <img src={imgurl} />
-                    }
+                    <div className="pic-img">
+                        <img src={imgurl} onClick={() => isInfo(id)}/>
+                    </div>
                     <div className="pic-mack">
                         <div className="pic-alt">{typeImg}</div>
                         <div className="pic-alt">{cod}</div>
@@ -50,9 +51,7 @@ export default class extends PureComponent {
                 </div>
                 <div className="content">
                     <div className='content_text'>
-                        {
-                            content
-                        }
+                        {content}
                     </div>
                     <div className="timer">
                         {createTime} - {endTime}
