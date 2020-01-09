@@ -14,12 +14,16 @@ class extends React.Component {
         this.setState({ bool: !bool })
     }
     render() {
-        const { v, width } = this.props
+        const { v, width, click, } = this.props
         const q = JSON.parse(v.info)
         const route = this.props.location.pathname
         const path = '/formnative/formlist'
         return (
-            <dl key={v.id} className={cs('d', { d1: v.id % 2 === 0, d2: v.id % 2 !== 0 })} style={{ width: width }}>
+            <dl 
+                key={v.id} 
+                className={cs('d', { d1: v.id % 2 === 0, d2: v.id % 2 !== 0 })} style={{ width: width }}
+                onClick={() => {click(q)}}
+            >
                 <Collection_detail
                     click={this.uncollect}
                     bool={this.state.bool}

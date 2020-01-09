@@ -60,6 +60,8 @@ class extends React.Component {
     jump = value => {
         const { detils, history } = this.props
         detils(value)
+        console.log(value);
+        
         //history.push('/info')
     }
 

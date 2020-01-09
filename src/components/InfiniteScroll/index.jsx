@@ -21,6 +21,7 @@ export default class extends Component {
                             <Card 
                                 v={v} 
                                 key={k} 
+                                click={click}
                             />
                         ))
                     }
