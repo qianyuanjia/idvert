@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react'
 import "./style.less"
+import Star from '@@/Star'
 
 export default class extends PureComponent {
+
     render() {
         const {
             id="test",
@@ -9,8 +11,8 @@ export default class extends PureComponent {
             headImg = "https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2474359490,1160804813&fm=26&gp=0.jpg",
             content = "content",
             typeImg = "type",
-            imgurl = "https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2474359490,1160804813&fm=26&gp=0.jpg",
-            addInfo = "addInfo",
+            imgurl = "imgurl",
+            addInfo = "AddInfo",
             http = "test",
             createTime = "createTime",
             endTime = "endTime",
@@ -18,9 +20,10 @@ export default class extends PureComponent {
             cod = "cod",
             isInfo = () => {}
         } = this.props
+        
         return (
-            <div className="cart-cpt">
-                <div className="save">{save}</div>
+            <div className="cart-cpt" onClick={() => isInfo(id)}>
+                <div className="save">{<Star bool={save} />}</div>
                 {
                     title != "" && (
                         <>
@@ -40,7 +43,7 @@ export default class extends PureComponent {
                 }
                 <div className="pic-box">
                     <div className="pic-img">
-                        <img src={imgurl} onClick={() => isInfo(id)}/>
+                        <img src={imgurl} />
                     </div>
                     <div className="pic-mack">
                         <div className="pic-alt">{typeImg}</div>

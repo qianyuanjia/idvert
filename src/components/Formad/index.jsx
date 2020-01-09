@@ -14,7 +14,6 @@ import { connect } from 'react-redux';
 import { home_form } from '@/actions/home'
 import { HOME_AD } from '@/constants/actionTypes'
 import { hump } from '@/utils/string'
-import shortid from 'shortid'
 import moment from 'moment';
 
 const { Option } = Select;
@@ -88,7 +87,6 @@ class extends React.PureComponent {
                 let createTime = moment(new Date().getTime()).format('YYYY-MM-DD')
 
                 let info = {
-                    id: shortid.generate(),
                     title,
                     addInfo,
                     http,
@@ -102,7 +100,9 @@ class extends React.PureComponent {
                 }   
                 this.props.home_sub({ token, info })
                     .then(res => {
-                        if (res.payload.data.code === 200) {
+                        console.log(res);
+                        
+                        if (res.payload.data.code === '200') {
                             message.success("添加成功")
                         } else {
                             message.error("添加失败")
