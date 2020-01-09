@@ -1,5 +1,4 @@
 import { handleActions } from 'redux-actions'
-import { POST_TABDATA } from '@/constants/actionTypes'
 import _ from 'loadsh'
 import { POST_TABDATA, DETAILS } from '@/constants/actionTypes'
 
