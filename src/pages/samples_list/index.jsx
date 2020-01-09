@@ -63,6 +63,11 @@ class extends React.Component {
         console.log(`checked = ${e.target.checked}`);
     }
 
+    jump = value => {
+        console.log(value);
+        
+    }
+
     loadFunc = (page = 1) => {
         const { data, count } = this.state
         const token = localStorage.getItem('token')
@@ -120,6 +125,7 @@ class extends React.Component {
                         data={data}
                         count={count}
                         loadFunc={this.loadFunc}
+                        click={this.jump}
                     />
                 </div>
             </div>

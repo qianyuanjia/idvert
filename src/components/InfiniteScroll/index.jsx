@@ -5,7 +5,7 @@ import InfiniteScroll from 'react-infinite-scroller'
 
 export default class extends Component {
     render() {
-        const { hasmore, data, count, loadFunc } = this.props
+        const { hasmore, data, count, loadFunc, click } = this.props
         return (
             <InfiniteScroll
                 loadMore={loadFunc}
@@ -17,7 +17,7 @@ export default class extends Component {
                 <div className='pages-hoc'>
                     {
                         data.length > 0 && data.map((v, k) => (
-                            <Card v={v} key={k} />
+                            <Card v={v} key={k} click={click}/>
                         ))
                     }
                 </div>
