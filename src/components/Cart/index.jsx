@@ -20,7 +20,6 @@ export default class extends PureComponent {
             cod = "cod",
             isInfo = () => {}
         } = this.props
-        
         return (
             <div className="cart-cpt" onClick={() => isInfo(id)}>
                 <div className="save">{<Star bool={save} />}</div>
