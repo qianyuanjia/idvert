@@ -71,7 +71,7 @@ class extends React.Component {
             return false
         }
         this.props.post_data({ limit: 10, page, token })
-            .then(res => {
+            .then(() => {
                 const { list, count } = this.props.tabData
                 this.setState({
                     count: count,
