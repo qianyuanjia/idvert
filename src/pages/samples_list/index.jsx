@@ -63,10 +63,12 @@ class extends React.Component {
     onChange = (e) => {
         console.log(`checked = ${e.target.checked}`);
     }
+    
     //点击跳详情
     jump = value => {
-        console.log(value);
-        this.props.detils(value)
+        const { detils, history } = this.props
+        detils(value)
+        history.push('/info')
     }
 
     loadFunc = (page = 1) => {
