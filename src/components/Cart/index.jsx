@@ -21,7 +21,7 @@ export default class extends PureComponent {
             isInfo = () => {}
         } = this.props
         return (
-            <div className="cart-cpt">
+            <div className="cart-cpt" onClick={() => isInfo(id)}>
                 <div className="save">{<Star bool={save} />}</div>
                 {
                     title != "" && (
@@ -42,7 +42,7 @@ export default class extends PureComponent {
                 }
                 <div className="pic-box">
                     <div className="pic-img">
-                        <img src={imgurl} onClick={() => isInfo(id)}/>
+                        <img src={imgurl} />
                     </div>
                     <div className="pic-mack">
                         <div className="pic-alt">{typeImg}</div>

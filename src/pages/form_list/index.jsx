@@ -115,8 +115,14 @@ class extends React.PureComponent {
         }
     }
 
+    toInfo = id => {
+        console.log(id)
+    }
+
     render() {
         const { data, count, status } = this.state  //获取全部数据
+        console.log(data);
+        
         const buttonData = [
             { id: 0, text: 'ID', },
             { id: 1, text: '时间', },
@@ -176,7 +182,9 @@ class extends React.PureComponent {
                                 data.map((v, k) => {
                                     return (
                                         <Cart
+                                            isInfo={this.toInfo}
                                             key={k}
+                                            id={v.id}
                                             title={JSON.parse(v.info).title}
                                             imgurl={JSON.parse(v.info).imgUrl}
                                             add={JSON.parse(v.info).add}
