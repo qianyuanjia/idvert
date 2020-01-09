@@ -4,6 +4,7 @@ import "./style.less"
 export default class extends PureComponent {
     render() {
         const {
+            id="test",
             title = "test",
             headImg = "https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2474359490,1160804813&fm=26&gp=0.jpg",
             content = "content",
@@ -14,7 +15,8 @@ export default class extends PureComponent {
             createTime = "createTime",
             endTime = "endTime",
             save = "save",
-            cod = "cod"
+            cod = "cod",
+            isInfo = () => {}
         } = this.props
         return (
             <div className="cart-cpt">
@@ -38,7 +40,7 @@ export default class extends PureComponent {
                 }
                 <div className="pic-box">
                     <div className="pic-img">
-                        <img src={imgurl} />
+                        <img src={imgurl} onClick={() => isInfo(id)}/>
                     </div>
                     <div className="pic-mack">
                         <div className="pic-alt">{typeImg}</div>
@@ -47,9 +49,7 @@ export default class extends PureComponent {
                 </div>
                 <div className="content">
                     <div className='content_text'>
-                        {
-                            content
-                        }
+                        {content}
                     </div>
                     <div className="timer">
                         {createTime} - {endTime}
