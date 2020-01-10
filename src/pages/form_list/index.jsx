@@ -1,24 +1,34 @@
 import React from 'react';
 import './styles.less'
-import { LIST_DATA } from '@/constants/actionTypes'
-import { listData } from '@/actions/listdata'
+import { LIST_DATA, DETAILS } from '@/constants/actionTypes'
+import { listData, } from '@/actions/listdata'
+import { samples_list, } from '@/actions/samplesList'
 import { connect } from 'react-redux'
 import { hump } from '@/utils/string'
-import { Spin, Empty } from 'antd'
+import { Spin, Empty, DatePicker, Select, Tag } from 'antd'
 import Masonry from 'masonry-layout'
 import InfiniteScroll from 'react-infinite-scroller'
 import imagesLoaded from 'imagesloaded'
 import Cart from '@@/Cart'
 import { requestPost } from '@/utils/request'
 import Button from '@@/Button'
+import _ from 'loadsh'
+const { Option } = Select;
+
+
+function onChange(date, dateString) {
+    console.log(date, dateString);
+}
 
 
 export default @connect(state => {
     return {
-        tabData: state.listData.tabData
+        tabData: state.listData.tabData,
+        state: state.fromList.state,
     }
 }, {
     getListData: listData[hump(LIST_DATA)],
+    detils: samples_list[hump(DETAILS)]
 })
 class extends React.PureComponent {
     constructor(props) {
@@ -29,8 +39,30 @@ class extends React.PureComponent {
             status: true,
             time: '',
             clickStats: true,
+            selectData: [],
+            textStyle: {}
         }
         this.loadMoreData()  // 初始化进入页面 获取数据
+    }
+
+    componentDidMount() {
+        if(!Number(this.props.state)) {
+            this.setState({
+                textStyle: { color: '#ccc' }
+            })
+        }
+    }
+
+    componentWillReceiveProps() {
+        if(Number(this.props.state)) {
+            this.setState({
+                textStyle: { color: '#ccc' }
+            })
+        } else {
+            this.setState({
+                textStyle: { color: '#000' }
+            })
+        }
     }
 
     loadMoreData = (page = 1) => {
@@ -115,18 +147,58 @@ class extends React.PureComponent {
         }
     }
 
-    toInfo = id => {
-        console.log(id)
+    // 获取id  跳转到详情页面
+    toInfo = value => {
+        const { detils, history } = this.props
+        detils(value)
+        history.push('/info')
     }
+
+    // 获取下拉框数据
+    handleChange = value => {
+        console.log(value);
+        this.setState({
+            selectData: value
+        })
+    }
+
+    // 点击关闭
+    log = (item, k) => {
+        const { selectData } = this.state
+
+        const arr = _.remove(selectData, function (v) {
+            return item !== v
+        });
+
+        this.setState({
+            selectData: arr,
+        })
+    }
+
+    // 点击头部文字
+    listData = items => {
+
+    }
+
+ 
 
     render() {
         const { data, count, status } = this.state  //获取全部数据
-        console.log(data);
-        
+
+        // 按钮
         const buttonData = [
             { id: 0, text: 'ID', },
             { id: 1, text: '时间', },
         ]
+
+        // 文字list
+        const listData = [
+            { id: 0, text: 'Page' },
+            { id: 1, text: 'Name' },
+            { id: 2, text: 'URL' },
+            { id: 3, text: 'Text' },
+        ]
+
 
         return (
             <div className='form_list'>
@@ -135,7 +207,15 @@ class extends React.PureComponent {
                     <div className='form_list_top_Div'>
                         <div className='form_list_top_div_List'>
                             <div className='form_list_top_div_List_title'>Search Position:</div>
-                            <div className='form_list_top_div_content'> Page Name  AD URL AD Text Moinet Page Text</div>
+                            <div className='form_list_top_div_content'>
+                                {
+                                    listData.map((v, k) => {
+                                        return (
+                                            <span key={k} onClick={() => this.listData(v)} style={this.state.textStyle}>{v.text}</span>
+                                        )
+                                    })
+                                }
+                            </div>
                         </div>
                     </div>
                     <div className='form_list_top_Div'>
@@ -145,18 +225,69 @@ class extends React.PureComponent {
                         </div>
                         <div className='form_list_top_div_List'>
                             <div className='form_list_top_div_List_title'>Device :</div>
-                            <div className='form_list_top_div_content'> Desktop Android IOS</div> 
+                            <div className='form_list_top_div_content'> Desktop Android IOS</div>
                         </div>
                     </div>
 
                     <div className='form_list_top_Div'>
                         <div className='form_list_top_div_List'>
                             <div className='form_list_top_div_List_title'>First Seen Date :</div>
-                            <div className='form_list_top_div_content'> Image Video Carousel</div>
+                            <div className='form_list_top_div_content'> <DatePicker onChange={onChange} /> </div>
                         </div>
                         <div className='form_list_top_div_List'>
                             <div className='form_list_top_div_List_title'>Last Seen Date :</div>
-                            <div className='form_list_top_div_content'> Desktop Android IOS</div> 
+                            <div className='form_list_top_div_content'> <DatePicker onChange={onChange} /> </div>
+                        </div>
+                    </div>
+
+                    <div className='form_list_top_Div'>
+                        <div className='form_list_top_div_List'>
+                            <div className='form_list_top_div_List_title'>Premlum Search :</div>
+                            <div className='form_list_top_div_content'>
+                                <Select
+                                    mode="multiple"
+                                    style={{ width: '100%' }}
+                                    placeholder="select one country"
+                                    // defaultValue={['china']}
+                                    onChange={this.handleChange}
+                                    optionLabelProp="label"
+                                >
+                                    <Option value="china" label="China">
+                                        China
+                                    </Option>
+                                    <Option value="usa" label="USA">
+                                        U.S.A
+                                    </Option>
+                                    <Option value="japan" label="Japan">
+                                        Japan
+                                    </Option>
+                                    <Option value="korea" label="Korea">
+                                        Korea
+                                    </Option>
+                                </Select>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* 结果 */}
+                    <div className='form_list_top_Div'>
+                        <div className='form_list_top_div_List'>
+                            <div className='form_list_top_div_List_title'>Searched :</div>
+                            <div className='form_list_top_div_content'>
+                                {
+                                    this.state.selectData.map((v, k) => {
+                                        return (
+                                            <Tag
+                                                key={k}
+                                                closable
+                                                onClose={() => this.log(v, k)}
+                                            >
+                                                {v}
+                                            </Tag>
+                                        )
+                                    })
+                                }
+                            </div>
                         </div>
                     </div>
 

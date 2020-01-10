@@ -37,7 +37,6 @@ class extends React.Component {
         }
         this.loadFunc()
     }
-    //监听图片
     imagesOnload = () => {
         const elLoad = imagesLoaded('.pages-hoc')
         elLoad.on('always', () => {

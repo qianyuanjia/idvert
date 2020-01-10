@@ -1,36 +1,48 @@
 import React from 'react';
 import PrivateRoute from '@@/PrivateRoute'
-import Nav from '@@/Nav';
+import { Link, } from 'react-router-dom';
+import cs from 'classnames'
 import './styles.less'
 
 const nav = [
     {
         id: 1,
         title: "FormList",
-        path: "/formnative/formlist",
-        color: '#111',
+        path: "/formnative",
     },
     {
         id: 2,
         title: "SamplesList",
         path: "/formnative/sampleslist",
-        color: '#111',
     },
     {
         id: 3,
         title: "Home",
         path: "/formnative/home",
-        color: '#111',
     }
 ]
 
 export default class extends React.PureComponent {
     render() {
+        const url = this.props.location.pathname == '/' ? '/formnative' :  this.props.location.pathname
+        
         return (
             <div className='form_native'>
                 <div className="form_native_nav">
                     <div className="center_nav">
-                        <Nav data={nav} />
+                        {
+                            nav.map((v, k) => {
+                                return (
+                                    <Link
+                                        to={v.path}
+                                        key={k}
+                                        className={cs({ 'astyle': url === v.path})}
+                                    >
+                                        {v.title}
+                                    </Link>
+                                )
+                            })
+                        }
                     </div>
                 </div>
                 <div className="form_native_content">
