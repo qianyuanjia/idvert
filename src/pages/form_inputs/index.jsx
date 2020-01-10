@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Select } from 'antd'
-import { search } from '@/services'
 const { Option } = Select
 
 export default class index extends Component {
