@@ -437,11 +437,17 @@ class extends React.PureComponent {
                     <div className="info-bottom"></div>
                 </div>
                 <div className="info-data">
+<<<<<<< HEAD
                     <Echarts
                         option={option}
                         width={'100%'}
                         height={'100%'}
                     />
+=======
+                    <div className="info-content">
+                     
+                    </div>
+>>>>>>> wang
                 </div>
             </div>
         )
