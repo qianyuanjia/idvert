@@ -26,6 +26,7 @@ const myPersistReducer = combineReducers({
         rdc.samplesList
     ),
     listData: rdc.listData,
+    fromList: rdc.fromList,
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

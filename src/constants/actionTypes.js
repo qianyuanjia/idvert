@@ -2,6 +2,7 @@
 
 // 李晓超 const
 export const LIST_DATA = 'LIST_DATA'
+export const LIST_STATUS = 'LIST_STATUS'
 
 
 // 王红涛 const
