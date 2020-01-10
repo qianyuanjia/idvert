@@ -9,19 +9,10 @@
     flex-direction: column;
     border-radius: 3px;
     transition: .7s;
-    &:hover {
-        box-shadow: 10px 10px 3px #ccc;
-        transform: scale(1.01);
-        cursor: pointer;
-        .save {
-            display: block;
-        }
-    }
     &:hover .save {
         opacity: 1;
+        display: block;
     }
-   
-
     .head-title {
         width: 100%;
         height: auto;
@@ -30,6 +21,8 @@
         .head-img {
             width: 40px;
             height: 40px;
+            display: flex;
+            align-items: center;
             img {
                 width: 100%;
                 height: auto;
