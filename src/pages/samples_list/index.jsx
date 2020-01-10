@@ -60,7 +60,6 @@ class extends React.Component {
     }
     //点击跳详情
     jump = value => {
-        console.log(value);
         const { detils, history } = this.props
         detils(value)
         history.push('/info')

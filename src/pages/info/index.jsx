@@ -426,7 +426,7 @@ class extends React.PureComponent {
                 <div className="info-cart">
                     <Cart
                         cod={details.cod}
-                        imgurl={details.imgurl} 
+                        imgurl={details.imgurl || details.imgUrl} 
                         addInfo={details.content}
                         http={details.http}
                         content={details.http}
