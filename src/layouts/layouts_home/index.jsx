@@ -3,6 +3,11 @@ import PrivateRoute from '@@/PrivateRoute'
 import { Nav } from '@@'
 import login from '@/assets/images/logo.png'
 import './styles.less'
+import { Input } from 'antd';
+import { from_list } from '@/actions/fromList'
+import { hump } from '@/utils/string'
+import { LIST_STATUS } from '@/constants/actionTypes'
+import { connect } from 'react-redux'
 
 const nav = [
     {
@@ -25,8 +30,19 @@ const nav = [
     }
 ]
 
-export default class extends React.PureComponent {
-    
+export default @connect(state => ({}), {
+    from_list: from_list[hump(LIST_STATUS)]
+})
+class extends React.PureComponent {
+
+    change = (e) => {
+        if(e.target.value.length) {
+            this.props.from_list('1')
+        } else {
+            this.props.from_list('0')
+        }
+    }
+
     render() {
         return (
             <div className='layouts_home'>
@@ -38,7 +54,8 @@ export default class extends React.PureComponent {
                         <Nav data={nav} />
                     </div>
                     <div className="search">
-                        <input className="allSearch" type="text" />
+                        {/* <input className="allSearch" type="text" /> */}
+                        <Input size="large" placeholder="large size" onChange={(e) => this.change(e)}/>
                     </div>
                     <div className="user">
                         USER
