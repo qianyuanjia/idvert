@@ -20,12 +20,9 @@ import './styles.less'
 
 import { requestPost } from '@/utils/request'
 
-export default @connect(state => {
-    return {
-        tabData: state.samplesList.tabData,
-    }
-}, {
-    // POST_TABDATA: samples_list.POST_TABDATA
+export default @connect(state => ({
+    tabData: state.samplesList.tabData,
+}), {
     post_data: samples_list[hump(POST_TABDATA)],
     detils: samples_list[hump(DETAILS)]
 })
@@ -62,7 +59,6 @@ class extends React.Component {
     }
     //点击跳详情
     jump = value => {
-        console.log(value);
         const { detils, history } = this.props
         detils(value)
         history.push('/info')
