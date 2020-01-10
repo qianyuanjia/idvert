@@ -14,35 +14,37 @@ class extends React.Component {
         this.setState({ bool: !bool })
     }
     render() {
-        const { v, width } = this.props
+        const { v, width, click, } = this.props
         const q = JSON.parse(v.info)
         const route = this.props.location.pathname
         const path = '/formnative/formlist'
         return (
-            <dl key={v.id} className={cs('d', { d1: v.id % 2 === 0, d2: v.id % 2 !== 0 })} style={{ width: width }}>
+            <div 
+                key={v.id} 
+                className={cs('d', { d1: v.id % 2 === 0, d2: v.id % 2 !== 0 })} style={{ width: width }}
+            >
                 <Collection_detail
-                    click={this.uncollect}
-                    bool={this.state.bool}
+                        click={this.uncollect}
+                        bool={this.state.bool}
                 />
-                <span className='staic'>{q.typeImg}</span>
-                <span className='hua'>{q.cod}</span>
-                <p>{route === path ? q.title : ''}</p>
-                <dt>
-                    <p className='head'>
+                <dl onClick={() => {click(q)}}>
+                    
+                    <span className='staic'>{q.typeImg}</span>
+                    <span className='hua'>{q.cod}</span>
+                    <p>{route === path ? q.title : ''}</p>
+                    <dt>
                         <img src={q.imgUrl} alt={q.http} />
-                        <span>{q.cod}</span>
-                    </p>
-                    <img src={q.imgUrl} alt={q.http} />
-                </dt>
-                <dd>
-                    <p>{q.content}</p>
-                    <p>{q.createTime} - {q.endTime}</p>
-                    <p>
-                        <span>{q.http}</span>
-                        <span>{route === path ? 'Learn More' : ''}</span>
-                    </p>
-                </dd>
-            </dl>
+                    </dt>
+                    <dd>
+                        <p>{q.content}</p>
+                        <p>{q.createTime} - {q.endTime}</p>
+                        <p>
+                            <span>{q.http}</span>
+                            <span>{route === path ? 'Learn More' : ''}</span>
+                        </p>
+                    </dd>
+                </dl>
+            </div>
         )
     }
 }

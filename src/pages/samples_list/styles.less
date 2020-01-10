@@ -79,6 +79,7 @@
                 padding: 8px;
                 box-sizing: border-box;
                 position: relative;
+                transition: .7s;
                 .hua,.staic{
                     position: absolute;
                     display: inline-block;
@@ -92,18 +93,19 @@
                 }
                 .uncollect{
                     position: absolute;
-                    right: 10px;
+                    left: 10px;
                     top: 10px;
                     font-size: 14px;
                     display: none;
                 }
                 .hua{
-                    top: 60px;
+                    top: 10px;
                     right: 10px;
                 }
                 .staic{
-                    top: 85px;
+                    top: 35px;
                     right: 10px;
+                    background: rgb(90, 128, 0);
                 }
                 dt{
                     width: 100%;
@@ -136,6 +138,13 @@
                         align-items: center;
                         justify-content: space-between;
                         font-size: 13px;
+                        text-overflow: -o-ellipsis-lastline;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 4;
+                        line-clamp: 4;
+                        -webkit-box-orient: vertical;
                     }
                     p:nth-child(2){
                         padding: 10px 0;
@@ -152,6 +161,11 @@
                         color: rgb(0, 119, 255);
                     }
                 }
+              }
+              .d:hover{
+                transform: scale(1.01);
+                box-shadow: 10px 10px 3px #ccc;
+                cursor: pointer;
               }
               .d:hover .uncollect{
                 display: block;
