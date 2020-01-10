@@ -27,7 +27,9 @@ class extends React.PureComponent {
                     <div className="info-bottom"></div>
                 </div>
                 <div className="info-data">
-                    <div className="info-content"></div>
+                    <div className="info-content">
+                     
+                    </div>
                 </div>
             </div>
         )
