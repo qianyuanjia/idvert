@@ -1,15 +1,15 @@
-import React from 'react';
-import './styles.less'
-import { connect } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux'
 import { message } from 'antd'
 import { toLogin } from '@/actions/login'
+import './styles.less'
 
 export default @connect(state => ({
     userName: state.login.userName
 }), {
     login: toLogin.login,
     save_token: toLogin.saveToken
-}) 
+})
 class extends React.PureComponent {
     constructor(props) {
         super(props)
@@ -20,13 +20,13 @@ class extends React.PureComponent {
     }
     subLogin = () => {
         const { props: { login, save_token }, state: { userName, passWord } } = this
-        if(userName != "" && passWord != "") {
+        if (userName != "" && passWord != "") {
             login({
                 userName,
                 passWord
             })
                 .then(res => {
-                    if(res.payload.data.code == 200) {
+                    if (res.payload.data.code == 200) {
                         save_token({
                             token: res.payload.data.result
                         })
@@ -68,9 +68,9 @@ class extends React.PureComponent {
                     <div className="form-sub">
                         <div className="login-input input-userName">
                             <span>用户名: </span>
-                            <input 
+                            <input
                                 id="userName"
-                                type="text" 
+                                type="text"
                                 onChange={onChange}
                                 value={userName}
                             />
@@ -78,7 +78,7 @@ class extends React.PureComponent {
                         <div className="login-input input-passWord">
                             <span>密码: </span>
                             <input
-                                id="passWord" 
+                                id="passWord"
                                 type="password"
                                 onChange={onChange}
                                 value={passWord}

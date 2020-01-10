@@ -1,24 +1,17 @@
-import React from 'react';
-//引组件
+import React from 'react'
 import Select from '@/pages/form_inputs'
 import Times from '@/pages/form_time'
 import InfiniteScroll from '@@/InfiniteScroll'
-import { search } from '@/services'
-//redux
 import { connect } from 'react-redux'
 import { samples_list, } from '@/actions/samplesList'
 import { hump } from '@/utils/string'
 import { POST_TABDATA, DETAILS } from '@/constants/actionTypes'
-//插件
 import Masonry from 'masonry-layout'
 import imagesLoaded from 'imagesloaded'
 import { Checkbox } from 'antd'
 import _ from 'loadsh'
 import selectJson from '@/assets/select'
-//样式
 import './styles.less'
-
-import { requestPost } from '@/utils/request'
 
 export default @connect(state => ({
     tabData: state.samplesList.tabData,

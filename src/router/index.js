@@ -1,8 +1,7 @@
-import React from 'react';
+import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
 import Interceptors from '@/components/Interceptors'
-
 import {
     Layouts_home,
     Layouts_user,
@@ -16,7 +15,6 @@ import {
     Form_list,
     Samples_list
 } from './router' // 引入页面
-
 
 const route = [
     {
@@ -34,7 +32,8 @@ const route = [
                 component: Login
             }
         ]
-    }, {
+    },
+    {
         path: '/',
         component: Layouts_home,
         router: [

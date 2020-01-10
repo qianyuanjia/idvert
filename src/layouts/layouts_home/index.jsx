@@ -2,13 +2,12 @@ import React from 'react';
 import PrivateRoute from '@@/PrivateRoute'
 import { Nav } from '@@'
 import login from '@/assets/images/logo.png'
-import './styles.less'
-import { Input, Avatar, Icon, Menu, Dropdown, } from 'antd';
+import { Input, Avatar, Icon, Menu, Dropdown, } from 'antd'
 import { from_list } from '@/actions/fromList'
 import { hump } from '@/utils/string'
 import { LIST_STATUS } from '@/constants/actionTypes'
 import { connect } from 'react-redux'
-
+import './styles.less'
 
 const nav = [
     {
@@ -45,22 +44,22 @@ class extends React.PureComponent {
     render() {
         const menu = (
             <Menu>
-              <Menu.Item key="0">
-                <a target="_blank" rel="noopener noreferrer" href="#">
-                  1st menu item
+                <Menu.Item key="0">
+                    <a target="_blank" rel="noopener noreferrer" href="#">
+                        1st menu item
                 </a>
-              </Menu.Item>
-              <Menu.Item key="1">
-                <a target="_blank" rel="noopener noreferrer" href="#">
-                  2nd menu item
+                </Menu.Item>
+                <Menu.Item key="1">
+                    <a target="_blank" rel="noopener noreferrer" href="#">
+                        2nd menu item
                 </a>
-              </Menu.Item>
-              <Menu.Divider />
-              <Menu.Item key="3" disabled>
-                3rd menu item（disabled）
+                </Menu.Item>
+                <Menu.Divider />
+                <Menu.Item key="3" disabled>
+                    3rd menu item（disabled）
               </Menu.Item>
             </Menu>
-          );
+        )
         return (
             <div className='layouts_home'>
                 <div className="header_nav">
@@ -84,7 +83,7 @@ class extends React.PureComponent {
                             <div className='user_left_top'>
                                 <Dropdown overlay={menu}>
                                     <span>
-                                    Hover me <Icon type="down" />
+                                        Hover me <Icon type="down" />
                                     </span>
                                 </Dropdown>
                             </div>

@@ -7,9 +7,7 @@ export default @withRouter
 class extends React.PureComponent {
     constructor(props) {
         super(props)
-
         let cancelToken = axios.CancelToken
-
         const cancel = []
 
         const removePending = config => {
@@ -42,7 +40,6 @@ class extends React.PureComponent {
             return Promise.reject(error)
         })
     }
-
     render() {
         return <></>
     }
