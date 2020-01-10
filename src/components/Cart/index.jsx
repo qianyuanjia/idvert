@@ -21,7 +21,7 @@ export default class extends PureComponent {
             isInfo = () => {}
         } = this.props
         return (
-            <div className="cart-cpt" onClick={() => isInfo(id)}>
+            <div className="cart-cpt" onClick={() => isInfo(this.props)}>
                 <div className="save">{<Star bool={save} />}</div>
                 {
                     title != "" && (

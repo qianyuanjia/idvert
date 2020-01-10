@@ -25,7 +25,6 @@ export default @connect(state => {
         tabData: state.samplesList.tabData,
     }
 }, {
-    // POST_TABDATA: samples_list.POST_TABDATA
     post_data: samples_list[hump(POST_TABDATA)],
     detils: samples_list[hump(DETAILS)]
 })

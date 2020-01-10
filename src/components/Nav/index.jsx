@@ -1,25 +1,29 @@
 import React, { PureComponent } from 'react'
-import { NavLink } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import cs from 'classnames'
 import './style.less';
 
-export default class extends PureComponent {
+export default @withRouter
+class extends PureComponent {
     render() {
-        const { 
-            props: { data = [] }, 
-        } = this
+        const { data } = this.props
+        const url = this.props.location.pathname == '/' ? '/formnative' :  `/${this.props.location.pathname.split('/')[1]}`
         return (
-            <>
+            <div className='components_nav'>
                 {
-                    data.length > 0 && data.map((res, key) => (
-                        <NavLink 
-                            key={key}
-                            activeClassName="selected" 
-                            to={res.path} 
-                            style={{color: res.color}}>{res.title}
-                        </NavLink>
-                    ))
+                    data.map((v, k) => {
+                        return (
+                            <Link 
+                                to={v.path} 
+                                key={k}
+                                className={cs({'aStyle': url === v.path})}
+                            >
+                                {v.title}
+                            </Link>
+                        )
+                    })
                 }
-            </>
+            </div>
         )
     }
 }

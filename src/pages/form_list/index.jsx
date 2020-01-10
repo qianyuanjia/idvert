@@ -1,7 +1,8 @@
 import React from 'react';
 import './styles.less'
-import { LIST_DATA } from '@/constants/actionTypes'
-import { listData } from '@/actions/listdata'
+import { LIST_DATA, DETAILS } from '@/constants/actionTypes'
+import { listData, } from '@/actions/listdata'
+import { samples_list, } from '@/actions/samplesList'
 import { connect } from 'react-redux'
 import { hump } from '@/utils/string'
 import { Spin, Empty, DatePicker, Select, Tag } from 'antd'
@@ -12,18 +13,12 @@ import Cart from '@@/Cart'
 import { requestPost } from '@/utils/request'
 import Button from '@@/Button'
 import _ from 'loadsh'
-
-
 const { Option } = Select;
 
 
 function onChange(date, dateString) {
     console.log(date, dateString);
 }
-
-
-
-// console.log(state.fromList.state, 'state');
 
 
 export default @connect(state => {
@@ -33,6 +28,7 @@ export default @connect(state => {
     }
 }, {
     getListData: listData[hump(LIST_DATA)],
+    detils: samples_list[hump(DETAILS)]
 })
 class extends React.PureComponent {
     constructor(props) {
@@ -151,9 +147,11 @@ class extends React.PureComponent {
         }
     }
 
-    // 获取id
-    toInfo = id => {
-        console.log(id)
+    // 获取id  跳转到详情页面
+    toInfo = value => {
+        const { detils, history } = this.props
+        detils(value)
+        history.push('/info')
     }
 
     // 获取下拉框数据
@@ -171,7 +169,6 @@ class extends React.PureComponent {
         const arr = _.remove(selectData, function (v) {
             return item !== v
         });
-        console.log(arr);
 
         this.setState({
             selectData: arr,
@@ -182,6 +179,8 @@ class extends React.PureComponent {
     listData = items => {
 
     }
+
+ 
 
     render() {
         const { data, count, status } = this.state  //获取全部数据
