@@ -26,7 +26,6 @@ const nav = [
 ]
 
 export default class extends React.PureComponent {
-    
     render() {
         return (
             <div className='layouts_home'>
