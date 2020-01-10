@@ -1,34 +1,29 @@
 import React, { PureComponent } from 'react'
-import { Link } from 'react-router-dom';
-import { Menu } from 'antd'
+import { Link, withRouter } from 'react-router-dom';
+import cs from 'classnames'
 import './style.less';
 
-export default class extends PureComponent {
-    state = {
-        current: '0',
-    };
-
-    handleClick = e => {
-        this.setState({
-            current: e.key,
-        });
-    };
+export default @withRouter
+class extends PureComponent {
     render() {
-        const { 
-            props: { data = [] }, 
-            state: { current },
-            handleClick 
-        } = this
+        const { data } = this.props
+        const url = this.props.location.pathname == '/' ? '/formnative' :  `/${this.props.location.pathname.split('/')[1]}`
         return (
-            <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
+            <div className='components_nav'>
                 {
-                    data.map((res, key) => (
-                        <Menu.Item key={key}>
-                            <Link to={res.path} style={{color: res.color}}>{res.title}</Link>
-                        </Menu.Item>
-                    ))
+                    data.map((v, k) => {
+                        return (
+                            <Link 
+                                to={v.path} 
+                                key={k}
+                                className={cs({'aStyle': url === v.path})}
+                            >
+                                {v.title}
+                            </Link>
+                        )
+                    })
                 }
-            </Menu>
+            </div>
         )
     }
 }

@@ -25,6 +25,11 @@
             justify-content: space-around;
             align-items: center;
         }
+        
+        .aStyle {
+            font-weight: bold;
+            color: #fff;
+        }
         .search {
             flex: 2;
             height: 100%;
@@ -48,6 +53,35 @@
             height: 100%;
             display: flex;
             align-items: center;
+            .user_left {
+                width: 30px;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                margin-right: 5px;
+                box-sizing: border-box;
+            }
+            .user_right {
+                flex: 1;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                font-size: 16px;
+                .user_left_bot, .user_left_top {
+                    flex: 1;
+                    padding-left: 10px;
+                    display: flex;
+                    box-sizing: border-box;
+                    .anticon {
+                        font-size: 20px;
+                        margin-right: 3px;
+                    }
+                }
+                .user_left_top {
+                    display: flex;
+                    align-items: center;
+                }
+            }
         } 
     }
     .home_content {

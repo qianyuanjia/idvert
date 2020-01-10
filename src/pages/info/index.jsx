@@ -8,15 +8,14 @@ export default @connect(state => {
 class extends React.PureComponent {
     
     render() {
-        console.log(this.props.details)
         const { details } = this.props
-
+            
         return (
             <div className='info'>
                 <div className="info-cart">
                     <Cart 
                         cod={details.cod}
-                        imgurl={details.imgUrl} 
+                        imgurl={details.imgurl} 
                         addInfo={details.content}
                         http={details.http}
                         content={details.http}
