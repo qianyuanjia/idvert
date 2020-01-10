@@ -78,7 +78,14 @@
         width: 100%;
         height: auto;
         margin: 0 auto;      
-
+        &:hover {
+            box-shadow: 10px 10px 3px #ccc;
+            transform: scale(1.01);
+            cursor: pointer;
+        }
+        &:hover .save {
+            opacity: 1;
+        }
     }
 
     .cart-cpt {

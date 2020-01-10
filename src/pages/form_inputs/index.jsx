@@ -1,49 +1,29 @@
 import React, { Component } from 'react';
 import { Select } from 'antd'
-const { Option } = Select;
+const { Option } = Select
 
 export default class index extends Component {
-
-    handleChange = value => {
-        console.log(value)
-    }
-
     render() {
-        const { title } = this.props
+        const { title, data, show, handleChange } = this.props
         return (
-            <div> 
+            <div>
                 <Select
                     mode="multiple"
-                    
                     placeholder={title}
-                    onChange={this.handleChange}
+                    onChange={handleChange}
                     optionLabelProp="label"
                     maxTagCount={1}
                 >
-                    <Option value="china" label="China">
-                        <span role="img" aria-label="China">
-                            🇨🇳
-                        </span>
-                    China (中国)
-                    </Option>
-                    <Option value="usa" label="USA">
-                        <span role="img" aria-label="USA">
-                            🇺🇸
-                        </span>
-                    USA (美国)
-                    </Option>
-                    <Option value="japan" label="Japan">
-                        <span role="img" aria-label="Japan">
-                            🇯🇵
-                        </span>
-                    Japan (日本)
-                    </Option>
-                    <Option value="korea" label="Korea">
-                        <span role="img" aria-label="Korea">
-                            🇰🇷
-                        </span>
-                    Korea (韩国)
-                    </Option>
+                    {
+                        data ? data.map(v => (
+                            <Option value={v.value} label={v.key} key={v.count ? v.count : ''}>
+                                <span role="img" aria-label={v.key} style={{display:show}}>
+                                    {v.value}
+                                </span>
+                                {v.key}
+                            </Option>
+                        )) : ''
+                    }
                 </Select>
             </div>
         );
