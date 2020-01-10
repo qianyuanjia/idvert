@@ -17,6 +17,9 @@ export default {
     // post page 页码从1开始，不传默认是1 limit 分页长度最少1，不传默认20
     Demo: '/Home/Apis/listWithPage',
     
-    // post file 上传文件 type 上传方式 file[]                      暂不确定 先别用
+    // post file 上传文件 type 上传方式 file[]
     DemoUpload: '/Home/Apis/upload',
+
+    //搜索
+    Search: '/?s=/Home/Apis/sampleSearch'
 }

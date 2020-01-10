@@ -1,7 +1,15 @@
 // 张慧敏 api
 import api from './api'
 import { requestPost } from '@/utils/request'
+const search = options => {
+    requestPost(api.Search, options)
+    console.log(options)
+}
 
+
+export {
+    search
+}
 // 李晓超 api
 export const tables = options => {
     return requestPost(api.List, options)
