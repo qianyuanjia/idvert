@@ -39,7 +39,6 @@ class extends React.Component {
         }
         this.loadFunc()
     }
-    //监听图片
     imagesOnload = () => {
         const elLoad = imagesLoaded('.pages-hoc')
         elLoad.on('always', () => {
@@ -61,7 +60,6 @@ class extends React.Component {
     }
     //点击跳详情
     jump = value => {
-        console.log(value);
         const { detils, history } = this.props
         detils(value)
         history.push('/info')

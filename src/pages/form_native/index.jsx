@@ -24,6 +24,7 @@ const nav = [
 
 export default class extends React.PureComponent {
     render() {
+        const url = this.props.location.pathname == '/' ? '/formnative' :  this.props.location.pathname
         
         return (
             <div className='form_native'>
@@ -35,7 +36,7 @@ export default class extends React.PureComponent {
                                     <Link
                                         to={v.path}
                                         key={k}
-                                        className={cs({ 'astyle': this.props.location.pathname === v.path})}
+                                        className={cs({ 'astyle': url === v.path})}
                                     >
                                         {v.title}
                                     </Link>
