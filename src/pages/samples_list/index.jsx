@@ -62,9 +62,10 @@ class extends React.Component {
     }
     //点击跳详情
     jump = value => {
+        console.log(value);
         const { detils, history } = this.props
         detils(value)
-        //history.push('/info')
+        history.push('/info')
     }
     //无限滚动
     loadFunc = (page = 1) => {
@@ -74,7 +75,7 @@ class extends React.Component {
             return false
         }
         this.props.post_data({ limit: 10, page, token })
-            .then(res => {
+            .then(() => {
                 const { list, count } = this.props.tabData
                 this.setState({
                     count: count,
