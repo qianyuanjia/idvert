@@ -11,6 +11,7 @@ export default class extends PureComponent {
         this.setState({
             status: !status
         })
+        
     }
 
     render() {

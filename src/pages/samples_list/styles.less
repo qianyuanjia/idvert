@@ -138,6 +138,13 @@
                         align-items: center;
                         justify-content: space-between;
                         font-size: 13px;
+                        text-overflow: -o-ellipsis-lastline;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 4;
+                        line-clamp: 4;
+                        -webkit-box-orient: vertical;
                     }
                     p:nth-child(2){
                         padding: 10px 0;
