@@ -1,5 +1,4 @@
-import React from 'react';
-import './style.less'
+import React from 'react'
 import {
     Form,
     Select,
@@ -10,22 +9,20 @@ import {
     message,
     DatePicker,
 } from 'antd';
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import { home_form } from '@/actions/home'
 import { HOME_AD } from '@/constants/actionTypes'
 import { hump } from '@/utils/string'
-import moment from 'moment';
+import moment from 'moment'
+import './style.less'
 
-const { Option } = Select;
-const { TextArea } = Input;
+const { Option } = Select
+const { TextArea } = Input
 const { WeekPicker } = DatePicker
 
 export default @Form.create()
 @connect(state => {
-    // console.log(state)
-    return {
-
-    }
+    return {}
 }, {
     home_sub: home_form[hump(HOME_AD)]
 })
@@ -97,7 +94,7 @@ class extends React.PureComponent {
                     createTime,
                     imgUrl,
                     save: 0, // 0 为收藏 1 收藏
-                }   
+                }
                 this.props.home_sub({ token, info })
                     .then(res => {
                         if (res.payload.data.code === '200') {

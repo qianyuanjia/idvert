@@ -3,9 +3,7 @@ import api from './api'
 import { requestPost } from '@/utils/request'
 const search = options => {
     requestPost(api.Search, options)
-    console.log(options)
 }
-
 
 export {
     search

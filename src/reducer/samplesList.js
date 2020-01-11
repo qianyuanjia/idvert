@@ -8,7 +8,7 @@ const initState = {
 }
 
 export default handleActions({
-    [POST_TABDATA]: (state, action) => ({ ...state, tabData: _.get(action, 'payload.data.result', [])}),
+    [POST_TABDATA]: (state, action) => ({ ...state, tabData: _.get(action, 'payload.data.result', []) }),
     [DETAILS]: (state, action) => (
-        { ...state, details: action.payload}),
+        { ...state, details: action.payload }),
 }, initState)

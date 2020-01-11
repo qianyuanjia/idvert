@@ -1,12 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-import 'antd/dist/antd.less';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import 'antd/dist/antd.less'
 import '@/styles/iconfont.css'
-import '@/styles/reset.css';
-import './index.less';
-
-
+import '@/styles/reset.css'
+import './index.less'
 import Router from '@/router/index'  // 路由
 import { store } from './store'  //store
 import { Provider } from 'react-redux'
@@ -18,5 +15,5 @@ ReactDOM.render(
         <PersistGate loading={null} persistor={persistStore(store)}>
             <Router />
         </PersistGate>
-    </Provider>
-    , document.getElementById('root'));
+    </Provider>, 
+document.getElementById('root'))

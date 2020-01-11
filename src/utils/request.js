@@ -2,7 +2,6 @@ import axios from 'axios'
 import qs from 'qs'
 
 export function requestPost(url, action = {}) {
-
     return new Promise((resolve, reject) => {
         axios({
             method: 'POST',

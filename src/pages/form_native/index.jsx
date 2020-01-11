@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 import PrivateRoute from '@@/PrivateRoute'
-import { Link, } from 'react-router-dom';
+import { Link, } from 'react-router-dom'
 import cs from 'classnames'
 import './styles.less'
 
@@ -24,8 +24,8 @@ const nav = [
 
 export default class extends React.PureComponent {
     render() {
-        const url = this.props.location.pathname == '/' ? '/formnative' :  this.props.location.pathname
-        
+        const url = this.props.location.pathname == '/' ? '/formnative' : this.props.location.pathname
+
         return (
             <div className='form_native'>
                 <div className="form_native_nav">
@@ -36,7 +36,7 @@ export default class extends React.PureComponent {
                                     <Link
                                         to={v.path}
                                         key={k}
-                                        className={cs({ 'astyle': url === v.path})}
+                                        className={cs({ 'astyle': url === v.path })}
                                     >
                                         {v.title}
                                     </Link>

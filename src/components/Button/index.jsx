@@ -10,16 +10,15 @@ export default class extends PureComponent {
 
     render() {
         const { title, data } = this.props
-
         return (
             <div className="buttons" >
-                {title} : 
+                {title} :
                 {
                     data.map((v, k) => {
                         return (
-                            <Button 
-                                key={k}    
-                                onClick={() => this.click(v.text)}                        
+                            <Button
+                                key={k}
+                                onClick={() => this.click(v.text)}
                             >
                                 {v.text}
                             </Button>

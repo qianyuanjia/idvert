@@ -25,7 +25,7 @@ const myPersistReducer = combineReducers({
         rootPersistConfig,
         rdc.login
     ),
-    
+
     listData: rdc.listData,
     fromList: rdc.fromList,
 })
@@ -37,6 +37,6 @@ const store = createStore(
     composeEnhancers(applyMiddleware(promise, thunk))
 )
 
-window.store=store
+window.store = store
 
 export { store }

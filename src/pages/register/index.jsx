@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import './styles.less'
 
 export default class extends React.PureComponent {

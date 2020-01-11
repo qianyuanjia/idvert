@@ -1,6 +1,6 @@
 import React from 'react'
-import './styles.less'
 import { Formad } from '@@'
+import './styles.less'
 
 export default class extends React.PureComponent {
     render() {

@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 import './styles.less'
 import { Icon } from 'antd'
 
-
 export default class extends PureComponent {
     state = {
         status: false,
@@ -11,13 +10,10 @@ export default class extends PureComponent {
         this.setState({
             status: !status
         })
-        
+
     }
-
     render() {
-        // const { bool } = this.props
         const { status } = this.state
-
         return (
             <div className="uncollectx" onClick={() => this.click(status)}>
                 {

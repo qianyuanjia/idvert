@@ -1,14 +1,11 @@
 import React, { PureComponent } from 'react'
-import "./style.less"
 import Star from '@@/Star'
+import "./style.less"
 
 export default class extends PureComponent {
-
     render() {
         const {
-            id="test",
             title = "test",
-            headImg = "https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2474359490,1160804813&fm=26&gp=0.jpg",
             content = "content",
             typeImg = "type",
             imgurl = "imgurl",
@@ -18,7 +15,7 @@ export default class extends PureComponent {
             endTime = "endTime",
             save = "save",
             cod = "cod",
-            isInfo = () => {}
+            isInfo = () => { }
         } = this.props
         return (
             <div className="cart-cpt" >

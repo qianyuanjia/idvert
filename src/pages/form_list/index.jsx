@@ -1,5 +1,4 @@
-import React from 'react';
-import './styles.less'
+import React from 'react'
 import { LIST_DATA, DETAILS } from '@/constants/actionTypes'
 import { listData, } from '@/actions/listdata'
 import { samples_list, } from '@/actions/samplesList'
@@ -13,8 +12,7 @@ import Cart from '@@/Cart'
 import { requestPost } from '@/utils/request'
 import Button from '@@/Button'
 import _ from 'loadsh'
-const { Option } = Select;
-
+import './styles.less'
 
 function onChange(date, dateString) {
     console.log(date, dateString);
@@ -46,7 +44,7 @@ class extends React.PureComponent {
     }
 
     componentDidMount() {
-        if(!Number(this.props.state)) {
+        if (!Number(this.props.state)) {
             this.setState({
                 textStyle: { color: '#ccc' }
             })
@@ -54,7 +52,7 @@ class extends React.PureComponent {
     }
 
     componentWillReceiveProps() {
-        if(Number(this.props.state)) {
+        if (Number(this.props.state)) {
             this.setState({
                 textStyle: { color: '#ccc' }
             })
@@ -156,7 +154,6 @@ class extends React.PureComponent {
 
     // 获取下拉框数据
     handleChange = value => {
-        console.log(value);
         this.setState({
             selectData: value
         })
@@ -168,7 +165,7 @@ class extends React.PureComponent {
 
         const arr = _.remove(selectData, function (v) {
             return item !== v
-        });
+        })
 
         this.setState({
             selectData: arr,
@@ -176,14 +173,11 @@ class extends React.PureComponent {
     }
 
     // 点击头部文字
-    listData = items => {
-        
-    }
-
- 
+    listData = items => { }
 
     render() {
-        const { data, count, status } = this.state  //获取全部数据
+        const { data, status } = this.state  //获取全部数据
+        const { Option } = Select
 
         // 按钮
         const buttonData = [
@@ -198,7 +192,6 @@ class extends React.PureComponent {
             { id: 2, text: 'URL' },
             { id: 3, text: 'Text' },
         ]
-
 
         return (
             <div className='form_list'>
@@ -331,7 +324,6 @@ class extends React.PureComponent {
                                 }) : <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
                         }
                     </div>
-
                 </InfiniteScroll>
             </div>
         )

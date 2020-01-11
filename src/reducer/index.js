@@ -8,5 +8,4 @@ export {
     samplesList,
     listData,
     fromList,
-    
 }
