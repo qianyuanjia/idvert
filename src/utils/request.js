@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import axios from 'axios'
 import qs from 'qs'
 
@@ -22,4 +23,9 @@ export function requestGet(url) {
             .then(res => resolve(res))
             .catch(err => reject(err))
     })
+}
+
+export function Add() {
+    const [name, setName] = useState('小兰')
+    return <h1 onClick={() => setName(name + 1)}>{name}</h1>
 }

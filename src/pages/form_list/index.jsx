@@ -15,9 +15,8 @@ import _ from 'loadsh'
 import './styles.less'
 
 function onChange(date, dateString) {
-    console.log(date, dateString);
+    console.log(date, dateString)
 }
-
 
 export default @connect(state => {
     return {
@@ -28,6 +27,7 @@ export default @connect(state => {
     getListData: listData[hump(LIST_DATA)],
     detils: samples_list[hump(DETAILS)]
 })
+
 class extends React.PureComponent {
     constructor(props) {
         super(props)
@@ -173,7 +173,7 @@ class extends React.PureComponent {
     }
 
     // 点击头部文字
-    listData = items => { }
+    listData = items => {}
 
     render() {
         const { data, status } = this.state  //获取全部数据

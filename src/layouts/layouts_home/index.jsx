@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import PrivateRoute from '@@/PrivateRoute'
 import { Nav } from '@@'
 import login from '@/assets/images/logo.png'
@@ -27,7 +27,6 @@ const nav = [
     }
 ]
 
-
 export default @connect(state => ({}), {
     from_list: from_list[hump(LIST_STATUS)]
 })
@@ -41,23 +40,15 @@ class extends React.PureComponent {
         }
     }
 
+    exit = () => {
+        localStorage.removeItem('token')
+        this.props.history.push('/user/login')
+    }
+
     render() {
         const menu = (
             <Menu>
-                <Menu.Item key="0">
-                    <a target="_blank" rel="noopener noreferrer" href="#">
-                        1st menu item
-                </a>
-                </Menu.Item>
-                <Menu.Item key="1">
-                    <a target="_blank" rel="noopener noreferrer" href="#">
-                        2nd menu item
-                </a>
-                </Menu.Item>
-                <Menu.Divider />
-                <Menu.Item key="3" disabled>
-                    3rd menu item（disabled）
-              </Menu.Item>
+                <Menu.Item onClick={this.exit}> exit </Menu.Item>
             </Menu>
         )
         return (
@@ -77,11 +68,10 @@ class extends React.PureComponent {
                     <div className="user">
                         <div className='user_left'>
                             <Avatar icon="user" />
-
                         </div>
                         <div className='user_right'>
                             <div className='user_left_top'>
-                                <Dropdown overlay={menu}>
+                                <Dropdown overlay={menu} trigger={['click']}>
                                     <span>
                                         Hover me <Icon type="down" />
                                     </span>

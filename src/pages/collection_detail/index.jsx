@@ -3,7 +3,6 @@ import { Icon } from 'antd'
 import './style.less'
 
 export default class extends Component {
-
     render() {
         const { bool, click } = this.props
         return (

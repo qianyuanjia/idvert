@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
-import './styles.less'
 import { Button } from 'antd'
+import './styles.less'
 
 export default class extends PureComponent {
 

@@ -69,7 +69,7 @@ class extends React.PureComponent {
             return e;
         }
         return e && e.fileList;
-    };
+    }
 
     // 提交表单
     handleSubmit = e => {
@@ -104,8 +104,8 @@ class extends React.PureComponent {
                         }
                     })
             }
-        });
-    };
+        })
+    }
     render() {
         const {
             beforeUpload,
@@ -118,13 +118,13 @@ class extends React.PureComponent {
         const formItemLayout = {
             labelCol: { span: 6 },
             wrapperCol: { span: 14 },
-        };
+        }
         const uploadButton = (
             <div>
                 <Icon type={this.state.loading ? 'loading' : 'plus'} />
                 <div className="ant-upload-text">Upload</div>
             </div>
-        );
+        )
         return (
             <div className='home_ad'>
                 <div className="title_from">
