@@ -1,23 +1,21 @@
 import React from 'react'
+import _ from 'loadsh'
+import InfiniteScroll from 'react-infinite-scroller'
+import imagesLoaded from 'imagesloaded'
+import Masonry from 'masonry-layout'
+import moment from 'moment'
+import { Spin, Empty, DatePicker, Select, Tag } from 'antd'
+import { connect } from 'react-redux'
+import { hump } from '@/utils/string'
+import { requestPost } from '@/utils/request'
 import { LIST_DATA, DETAILS } from '@/constants/actionTypes'
 import { listData, } from '@/actions/listdata'
 import { samples_list, } from '@/actions/samplesList'
-import { connect } from 'react-redux'
-import { hump } from '@/utils/string'
-import { Spin, Empty, DatePicker, Select, Tag } from 'antd'
-import Masonry from 'masonry-layout'
-import InfiniteScroll from 'react-infinite-scroller'
-import imagesLoaded from 'imagesloaded'
-import Cart from '@@/Cart'
-import { requestPost } from '@/utils/request'
 import Button from '@@/Button'
-import _ from 'loadsh'
+import Cart from '@@/Cart'
 import './styles.less'
 
-function onChange(date, dateString) {
-    console.log(date, dateString);
-}
-
+const { RangePicker } = DatePicker;
 
 export default @connect(state => {
     return {
@@ -103,46 +101,35 @@ class extends React.PureComponent {
         })
     }
 
-    buttonClick = (text) => {
-        this.imagesOnload()
+    // oop(text,'点击谁', '排序谁')
+    oop = (text, clickHow, sortHow) => {
         const { data, clickStats } = this.state
-        this.setState({
-            clickStats: !clickStats
-        })
-        if (text === 'ID') {
+        if (text === clickHow) {
             let arr = []
             if (clickStats) {
                 arr = data.sort((x, y) => {
-                    return y.id - x.id
+                    return y[sortHow] - x[sortHow]
                 })
             } else {
                 arr = data.sort((x, y) => {
-                    return x.id - y.id
+                    return x[sortHow] - y[sortHow]
                 })
             }
-
-            this.setState({
-                data: arr,
-                time: new Date()
-            })
-        } else if (text === '时间') {
-
-            let arr = []
-            if (clickStats) {
-                arr = data.sort((x, y) => {
-                    return y.createtime - x.createtime
-                })
-            } else {
-                arr = data.sort((x, y) => {
-                    return x.createtime - y.createtime
-                })
-            }
-
             this.setState({
                 data: arr,
                 time: new Date()
             })
         }
+    }
+
+    buttonClick = (text) => {
+        this.imagesOnload()
+        const { clickStats } = this.state
+        this.setState({
+            clickStats: !clickStats
+        })
+        this.oop(text, 'ID', 'id')
+        this.oop(text, '时间', 'createtime')
     }
 
     // 获取id  跳转到详情页面
@@ -175,8 +162,29 @@ class extends React.PureComponent {
     // 点击头部文字
     listData = items => { }
 
+
+    // 时间框 显示
+    disabledDate = current => {
+        return current && current < moment().endOf('day')
+    }
+
+    timeChange = (info, items) => {
+        console.log(items, 'items');
+    }
+
+
+    // 删除所有
+    clearAll = () => {
+        this.setState({
+            selectData: []
+        })
+    }
+    
+
+
+
     render() {
-        const { data, status } = this.state  //获取全部数据
+        const { data, status, selectData } = this.state  //获取全部数据
         const { Option } = Select
 
         // 按钮
@@ -225,11 +233,32 @@ class extends React.PureComponent {
                     <div className='form_list_top_Div'>
                         <div className='form_list_top_div_List'>
                             <div className='form_list_top_div_List_title'>First Seen Date :</div>
-                            <div className='form_list_top_div_content'> <DatePicker onChange={onChange} /> </div>
+                            <div className='form_list_top_div_content'> 
+                                
+                                 <RangePicker 
+                                    disabledDate={this.disabledDate}
+                                    placeholder={['开始日期', '结束日期']}
+                                    format="YYYY-MM-DD"
+                                    allowClear   // 清除按钮 X
+                                    showToday
+                                    onChange={this.timeChange}
+                                /> 
+                                
+                            </div>
                         </div>
                         <div className='form_list_top_div_List'>
                             <div className='form_list_top_div_List_title'>Last Seen Date :</div>
-                            <div className='form_list_top_div_content'> <DatePicker onChange={onChange} /> </div>
+                            <div className='form_list_top_div_content'> 
+                                <RangePicker 
+                                    disabledDate={this.disabledDate}
+                                    placeholder={['开始日期', '结束日期']}
+                                    format="YYYY-MM-DD"
+                                    allowClear   // 清除按钮 X
+                                    showToday
+                                    onChange={this.timeChange}
+                                /> 
+                            
+                            </div>
                         </div>
                     </div>
 
@@ -239,11 +268,14 @@ class extends React.PureComponent {
                             <div className='form_list_top_div_content'>
                                 <Select
                                     mode="multiple"
-                                    style={{ width: '100%' }}
+                                    style={{ width: '230px', marginLeft: '20px' }}
                                     placeholder="select one country"
-                                    // defaultValue={['china']}
+                                    allowClear  // 支持清除
+                                    autoClearSearchValue
                                     onChange={this.handleChange}
                                     optionLabelProp="label"
+                                    showArrow
+                                    maxTagCount={2}
                                 >
                                     <Option value="china" label="China">
                                         China
@@ -258,6 +290,57 @@ class extends React.PureComponent {
                                         Korea
                                     </Option>
                                 </Select>
+
+                                <Select
+                                    mode="multiple"
+                                    style={{ width: '230px', marginLeft: '20px' }}
+                                    placeholder="select one country"
+                                    allowClear  // 支持清除
+                                    autoClearSearchValue
+                                    onChange={this.handleChange}
+                                    optionLabelProp="label"
+                                    showArrow
+                                    maxTagCount={2}
+                                >
+                                    <Option value="china" label="China">
+                                        China
+                                    </Option>
+                                    <Option value="usa" label="USA">
+                                        U.S.A
+                                    </Option>
+                                    <Option value="japan" label="Japan">
+                                        Japan
+                                    </Option>
+                                    <Option value="korea" label="Korea">
+                                        Korea
+                                    </Option>
+                                </Select>
+
+                                <Select
+                                    mode="multiple"
+                                    style={{ width: '230px', marginLeft: '20px' }}
+                                    placeholder="select one country"
+                                    allowClear  // 支持清除
+                                    autoClearSearchValue
+                                    onChange={this.handleChange}
+                                    optionLabelProp="label"
+                                    showArrow
+                                    maxTagCount={2}
+                                >
+                                    <Option value="china" label="China">
+                                        China
+                                    </Option>
+                                    <Option value="usa" label="USA">
+                                        U.S.A
+                                    </Option>
+                                    <Option value="japan" label="Japan">
+                                        Japan
+                                    </Option>
+                                    <Option value="korea" label="Korea">
+                                        Korea
+                                    </Option>
+                                </Select>
+                                
                             </div>
                         </div>
                     </div>
@@ -268,7 +351,7 @@ class extends React.PureComponent {
                             <div className='form_list_top_div_List_title'>Searched :</div>
                             <div className='form_list_top_div_content'>
                                 {
-                                    this.state.selectData.map((v, k) => {
+                                   selectData.length > 0 && selectData.map((v, k) => {
                                         return (
                                             <Tag
                                                 key={k}
@@ -278,7 +361,11 @@ class extends React.PureComponent {
                                                 {v}
                                             </Tag>
                                         )
-                                    })
+                                    }) 
+                                }
+                                {
+                                    // 删除全部
+                                     selectData.length > 0 && <a onClick={this.clearAll}>clear All</a>
                                 }
                             </div>
                         </div>
@@ -289,9 +376,7 @@ class extends React.PureComponent {
                 <div className='form_list_search'>
                     <Button title="SortBy" data={buttonData} buttonClick={this.buttonClick} />
                 </div>
-                {/* <div className='form_list_bot'>
 
-                </div> */}
                 <InfiniteScroll
                     initialLoad={false} // 不让它进入直接加载
                     pageStart={1} // 设置初始化请求的页数
