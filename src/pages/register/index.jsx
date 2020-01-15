@@ -21,16 +21,15 @@ class extends React.PureComponent {
 			if (!err) {
 				reg({  
 					userName: values.username,
-					passWord: values.password
+					passWord: values.password,
+					rePassWord: values.password,
 				})
 					.then(res => {
-                        console.log(res, 'res');
-                        
-						if(res.data.status === '200') {
-							message.success(res.data.info)
+						if(res.data.msg === 'succeed') {
+							message.success('注册成功')
 							this.props.history.push('/user/login')
 						} else {
-							message.warning(res.data.info || res.data.msg)
+							message.warning('注册失败')
 						}
 					})
 
