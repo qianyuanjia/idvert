@@ -18,7 +18,7 @@ export default class extends PureComponent {
             isInfo = () => { }
         } = this.props
         return (
-            <div className="cart-cpt">
+            <div className="cart-cpt" >
                 <div className="save">{<Star bool={save} />}</div>
                 {
                     title != "" && (
