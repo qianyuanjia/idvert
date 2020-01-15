@@ -1,56 +1,32 @@
 import React, { Component } from 'react'
 import { DatePicker } from 'antd'
+import moment from 'moment'
 
-export default class index extends Component {
-    state = {
-        startValue: '',
-        endValue: '',
+const { RangePicker } = DatePicker
+
+export default class extends Component {
+    state={
+        startDate: '',
+        endDate: ''
     }
-
-    onStartChange = (date) => {
-        this.setState({ startValue: date })
+    onChange = value => {
+        this.setState({
+            startDate: value[0]._d,
+            endDate:  value[1]._d
+        })
     }
-
-    onChangeEnd = (date) => {
-        this.setState({ endValue: date })
+    disabledDate = current => {
+        return current.valueOf() < moment(this.state.startDate).valueOf() || current.valueOf() > moment(this.state.endDate).valueOf()
     }
-
-    disabledStartDate = startValue => {
-        const { endValue } = this.state;
-        if (!startValue || !endValue) {
-            return false;
-        }
-        return startValue.valueOf() >= endValue.valueOf();
-    }
-
-
-    disabledEndDate = endValue => {
-        const { startValue } = this.state;
-        if (!endValue || !startValue) {
-            return false;
-        }
-        return endValue.valueOf() <= startValue.valueOf();
-    };
-
 
     render() {
         return (
-            <>
-                <div>
-                    <DatePicker
-                        onChange={this.onStartChange}
-                        placeholder="First Seen"
-                        disabledDate={this.disabledStartDate}
-                    />
-                </div>
-                <div>
-                    <DatePicker
-                        onChange={this.onEndChange}
-                        placeholder="Last Seen"
-                        disabledDate={this.disabledEndDate}
-                    />
-                </div>
-            </>
+            <div className="datePicker">
+                <RangePicker
+                    onChange={this.onChange}
+                    disabledDate={this.disabledDate}
+                />
+            </div>
         )
     }
 }

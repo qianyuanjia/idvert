@@ -4,11 +4,12 @@ import InfiniteScroll from 'react-infinite-scroller'
 import imagesLoaded from 'imagesloaded'
 import Masonry from 'masonry-layout'
 import moment from 'moment'
-import { Spin, Empty, DatePicker, Select, Tag } from 'antd'
+import { Spin, Empty, Select, Tag } from 'antd'
 import { connect } from 'react-redux'
 import { hump } from '@/utils/string'
 import { requestPost } from '@/utils/request'
 import { LIST_DATA, DETAILS } from '@/constants/actionTypes'
+import Time from '@/pages/form_time'
 import { listData, } from '@/actions/listdata'
 import { samples_list, } from '@/actions/samplesList'
 import Button from '@@/Button'
@@ -16,8 +17,6 @@ import Cart from '@@/Cart'
 import './styles.less'
 
 const { RangePicker } = DatePicker;
-
-
 export default @connect(state => {
     return {
         tabData: state.listData.tabData,
@@ -27,6 +26,7 @@ export default @connect(state => {
     getListData: listData[hump(LIST_DATA)],
     detils: samples_list[hump(DETAILS)]
 })
+
 class extends React.PureComponent {
     constructor(props) {
         super(props)
@@ -176,14 +176,16 @@ class extends React.PureComponent {
         console.log(items, 'items');
     }
 
-
     // 删除所有
     clearAll = () => {
         this.setState({
             selectData: []
         })
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 545776121e895f548da2b484fb0024076c70e07d
 
     render() {
         const { data, status, selectData } = this.state  //获取全部数据
@@ -235,31 +237,14 @@ class extends React.PureComponent {
                     <div className='form_list_top_Div'>
                         <div className='form_list_top_div_List'>
                             <div className='form_list_top_div_List_title'>First Seen Date :</div>
-                            <div className='form_list_top_div_content'> 
-                                
-                                 <RangePicker 
-                                    disabledDate={this.disabledDate}
-                                    placeholder={['开始日期', '结束日期']}
-                                    format="YYYY-MM-DD"
-                                    allowClear   // 清除按钮 X
-                                    showToday
-                                    onChange={this.timeChange}
-                                /> 
-                                
+                            <div className='form_list_top_div_content'>
+                                <Time />
                             </div>
                         </div>
                         <div className='form_list_top_div_List'>
                             <div className='form_list_top_div_List_title'>Last Seen Date :</div>
-                            <div className='form_list_top_div_content'> 
-                                <RangePicker 
-                                    disabledDate={this.disabledDate}
-                                    placeholder={['开始日期', '结束日期']}
-                                    format="YYYY-MM-DD"
-                                    allowClear   // 清除按钮 X
-                                    showToday
-                                    onChange={this.timeChange}
-                                /> 
-                            
+                            <div className='form_list_top_div_content'>
+                                <Time />
                             </div>
                         </div>
                     </div>
@@ -342,7 +327,7 @@ class extends React.PureComponent {
                                         Korea2
                                     </Option>
                                 </Select>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -353,7 +338,7 @@ class extends React.PureComponent {
                             <div className='form_list_top_div_List_title'>Searched :</div>
                             <div className='form_list_top_div_content'>
                                 {
-                                   selectData.length > 0 && selectData.map((v, k) => {
+                                    selectData.length > 0 && selectData.map((v, k) => {
                                         return (
                                             <Tag
                                                 key={k}
@@ -363,11 +348,11 @@ class extends React.PureComponent {
                                                 {v}
                                             </Tag>
                                         )
-                                    }) 
+                                    })
                                 }
                                 {
                                     // 删除全部
-                                     selectData.length > 0 && <a onClick={this.clearAll}>clear All</a>
+                                    selectData.length > 0 && <a onClick={this.clearAll}>clear All</a>
                                 }
                             </div>
                         </div>
