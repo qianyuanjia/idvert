@@ -16,7 +16,6 @@ import Button from '@@/Button'
 import Cart from '@@/Cart'
 import './styles.less'
 
-const { RangePicker } = DatePicker;
 export default @connect(state => {
     return {
         tabData: state.listData.tabData,
@@ -182,10 +181,6 @@ class extends React.PureComponent {
             selectData: []
         })
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 545776121e895f548da2b484fb0024076c70e07d
 
     render() {
         const { data, status, selectData } = this.state  //获取全部数据
