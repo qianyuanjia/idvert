@@ -17,6 +17,7 @@ import './styles.less'
 
 const { RangePicker } = DatePicker;
 
+
 export default @connect(state => {
     return {
         tabData: state.listData.tabData,
@@ -140,9 +141,12 @@ class extends React.PureComponent {
     }
 
     // 获取下拉框数据
+
     handleChange = value => {
+        let arr = []
+        arr.push(...value)
         this.setState({
-            selectData: value
+            selectData: arr
         })
     }
 
@@ -150,13 +154,13 @@ class extends React.PureComponent {
     log = (item, k) => {
         const { selectData } = this.state
 
-        const arr = _.remove(selectData, function (v) {
-            return item !== v
-        })
+        // const arr = _.remove(selectData, function (v) {
+        //     return item !== v
+        // })
 
-        this.setState({
-            selectData: arr,
-        })
+        // this.setState({
+        //     selectData: arr,
+        // })
     }
 
     // 点击头部文字
@@ -179,8 +183,6 @@ class extends React.PureComponent {
             selectData: []
         })
     }
-    
-
 
 
     render() {
@@ -268,7 +270,7 @@ class extends React.PureComponent {
                             <div className='form_list_top_div_content'>
                                 <Select
                                     mode="multiple"
-                                    style={{ width: '230px', marginLeft: '20px' }}
+                                    style={{ width: '250px', marginLeft: '20px' }}
                                     placeholder="select one country"
                                     allowClear  // 支持清除
                                     autoClearSearchValue
@@ -293,7 +295,7 @@ class extends React.PureComponent {
 
                                 <Select
                                     mode="multiple"
-                                    style={{ width: '230px', marginLeft: '20px' }}
+                                    style={{ width: '250px', marginLeft: '20px' }}
                                     placeholder="select one country"
                                     allowClear  // 支持清除
                                     autoClearSearchValue
@@ -302,23 +304,23 @@ class extends React.PureComponent {
                                     showArrow
                                     maxTagCount={2}
                                 >
-                                    <Option value="china" label="China">
-                                        China
+                                    <Option value="China1" label="China1">
+                                        China1
                                     </Option>
-                                    <Option value="usa" label="USA">
-                                        U.S.A
+                                    <Option value="U.S.A1" label="U.S.A1">
+                                        U.S.A1
                                     </Option>
-                                    <Option value="japan" label="Japan">
-                                        Japan
+                                    <Option value="Japan1" label="Japan1">
+                                        Japan1
                                     </Option>
-                                    <Option value="korea" label="Korea">
-                                        Korea
+                                    <Option value="Korea1" label="Korea1">
+                                        Korea1
                                     </Option>
                                 </Select>
 
                                 <Select
                                     mode="multiple"
-                                    style={{ width: '230px', marginLeft: '20px' }}
+                                    style={{ width: '250px', marginLeft: '20px' }}
                                     placeholder="select one country"
                                     allowClear  // 支持清除
                                     autoClearSearchValue
@@ -327,17 +329,17 @@ class extends React.PureComponent {
                                     showArrow
                                     maxTagCount={2}
                                 >
-                                    <Option value="china" label="China">
-                                        China
+                                    <Option value="China2" label="China2">
+                                        China2
                                     </Option>
-                                    <Option value="usa" label="USA">
-                                        U.S.A
+                                    <Option value="U.S.A.2" label="U.S.A.2">
+                                        U.S.A.2
                                     </Option>
-                                    <Option value="japan" label="Japan">
-                                        Japan
+                                    <Option value="Japan2" label="Japan2">
+                                        Japan2
                                     </Option>
-                                    <Option value="korea" label="Korea">
-                                        Korea
+                                    <Option value="Korea2" label="Korea2">
+                                        Korea2
                                     </Option>
                                 </Select>
                                 
