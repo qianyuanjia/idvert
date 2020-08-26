@@ -11,6 +11,7 @@ import { StoreContext } from 'redux-react-hook'
 import { persistStore } from 'redux-persist'   //数据持久化
 import { PersistGate } from 'redux-persist/lib/integration/react'
 
+//111111
 ReactDOM.render(
     <Provider store={store}>
         <StoreContext.Provider value={store} >
